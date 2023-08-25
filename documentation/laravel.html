@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<title>Preskool - Bootstrap Laravel Admin Template - Documentation</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+		
+		<!-- Styles -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">		
+		<link rel="stylesheet" href="assets/css/style.css">
+		
+	</head>
+
+	<body data-bs-spy="scroll" data-bs-target="#sidebar-menu" data-bs-offset="100">
+		
+		<div class="main-wrapper">
+			<!-- Header -->
+			<header>
+				<nav class="navbar" id="home">
+					<div class="container-fluid">
+						<div class="navbar-left">
+							<a class="navbar-brand" href="index.html">
+								<img class="logo-dark" src="assets/img/dreamguys-logo.png" alt="logo">
+							</a>
+						</div>
+						<div class="action-list">
+							<a class="btn btn-primary btn-live" target="_blank" href="https://themeforest.net/item/preskool-bootstrap-admin-html-template/29532878?s_rank=15">Buy Now</a>
+							<a class="btn btn-primary btn-live" target="_blank" href="https://preschool.dreamguystech.com/">Live Demo <i class="fas fa-arrow-right ps-2"></i></a>
+							<a class="support-btn" target="_blank" href="https://themeforest.net/user/dreamguys"><img class="img-fluid" src="assets/img/headset_mic.png" alt="icon"> Support</a>
+						</div>
+					</div>
+				</nav>
+				
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fas fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+			</header>
+			<!-- Header -->
+			
+			<!-- Main Wrapper -->
+		
+			<div class="sidebar" id="sidebar">
+				<div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu sidebar-body">
+						<h2>Table Of Content</h2>
+						<ul class="nav nav-sidebar">
+							<li class="nav-item">
+								<a class="nav-link" href="#introduction">1.Overview</a>
+								<ul>
+									<li class="nav-item">
+										<a class="nav-link" href="#features">1.1. Features</a>
+									</li>										
+									<li class="nav-item">
+										<a class="nav-link" href="#installation">1.2. Installation Guide</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#requirements">1.3. Requirements</a>
+									</li>
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#file_structure">2. STRUCTURE</a>
+								<ul>
+									<li class="nav-item">
+										<a class="nav-link" href="#file_structure">2.1. Files Structures</a>
+									</li>										
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#credits">3. CREDITS</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#support">4. SUPPORT</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#thanks">5. THANK YOU</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="page-wrapper" id="introduction">
+				<div class="content container-fluid">
+					<div class="logo">
+						<a class="main-logo" href="index.html">
+							<img class="img-fluid" src="assets/img/logo.png" alt="logo">
+						</a>
+					</div>
+					<div class="page-header">
+						<h4>Documentation</h4>
+						<ul>
+							<li>Created on: 08 Mar 2022</li>
+							<li>Developed by: <a target="_blank" href="https://dreamguys.co.in/">DreamGuy's Technologies</a>
+							</li>
+							<li>Support via email: <a href="mailto:admin@dreamguys.co.in">business@dreamguys.co.in</a>
+							</li>
+							<li>Support via Themeforest: <a target="_blank" href="https://themeforest.net/user/dreamguys/">Take me there</a></li>
+						</ul>
+					</div>
+					<hr>
+					<section id="features">
+						<h1>1. OVERVIEW</h1>
+						<p>Preskool template is built with Laravel 10.8 with Laravel Vite provides a clean build steps for your Laravel application. We have also added few reusable components which speedup your development.</p>
+						<h4>1. 1. Features</h4>
+						<ul class="feature-list">
+							<li><span>Creative Design:</span> Preskool is a bold theme that organizing content to follow natural eyes, striking balance between beautiful and visual hierarchy.</li>
+
+							<li><span>Fully Responsive:</span> The theme passed Mobile-Friendly Test – by Google. We also tested carefully the theme on almost devices: laptop, tablet, and phone. All elements are 100% responsive and ready for all devices.</li>
+
+							<li><span>Pixel Perfect Design</span></li>
+
+							<li><span>Color & Fonts is easily changed</span></li>
+
+							<li>Customer Reviews, Customer accounts, Compare Products, Grid & List layout, product fillter</li>
+
+							<li>Newsletter, Social Sharing</li>
+
+							<li><span>Bootstrap 5.x</span> used</li>
+
+							<li><span>Compatible Browsers:</span> IE8+, Firefox, Safari, Opera, Edge, Chrome</li>
+						</ul>
+					</section>
+					<section id="installation">
+						<h4>1. 2. Installation Guide</h4>
+						<ul>
+							<li>Open the terminal in your root directory(Preskool _laravel) & to install the composer packages run the following command:</li>
+						</ul>
+						<div class="highlight-box mb-3">
+							<p class="mb-0">composer install</p>
+						</div>
+						<ul>
+							<li>In the root directory, you will find a file named .env.example, copy the content,create a new file and paste that content save as .env and run the following command to generate the key.</li>
+						</ul>
+						<div class="highlight-box mb-3">
+							<p class="mb-0">php artisan key:generate</p>
+						</div>
+						<ul>
+							<li>a) Open the xampp,start the apache and mysql<br />
+							b) Open the localhost/phpmyadmin in browser and create db_name<br />
+							c) Update the db_name and phpmyadmin table username and password in .env file as per below screenshot</li>
+						</ul>
+						<div class="highlight-box mb-3">
+							<img class="mt-3" src="assets/img/env.png">
+						</div>
+						<ul>
+							<li>Open the terminal in your root directory(Preskool _laravel) & and run the following command for installing plugins used in the application:</li>
+						</ul>
+						<div class="highlight-box mb-3">
+							<p class="mb-0">npm install</p>
+						</div>
+						<ul>
+							<li>Open the terminal in your root directory(Preskool _laravel) & and run the application as a below command:</li>
+						</ul>
+						<div class="highlight-box mb-3">
+							<p class="mb-0">npm run dev</p>
+						</div>
+						<ul>
+							<li>Now you can run this Template in any web browser from your PC or Laptop.</li>
+						</ul>
+						<div class="highlight-box mb-3">
+							<p><strong>LOGIN ROUTE:</strong></p>
+							<p class="mb-0">For example: localhost/Preskool_laravel/blue/public/login or www.example.com/Preskool_laravel/blue/public/login</p>
+						</div>
+						<div class="highlight-box mb-3">
+							<p><strong>REGISTER ROUTE:</strong></p>
+							<p class="mb-0">For example: localhost/Preskool_laravel/blue/public/registration or www.example.com/Preskool_laravel/blue/public/registration</p>
+						</div>
+					</section>
+					<section id="requirements">
+						<h4>1. 3. Requirements</h4>
+						<ul>
+							<li>Composer</li>
+							<li>PHP >= 8.2.4</li>
+							<li>Xampp</li>
+						</ul>
+					</section>
+			
+					<section id="file_structure">
+						<h1>2. STRUCTURE</h1>
+						<h4>2. 1. File Structure</h4>
+						<p> Extract the zip file you received after purchase and you would find the exact below files and folders: </p>
+						<div class="file-wrap">
+						
+<pre><i class="fas fa-folder"></i><span>Preskool/ </span>
+│
+└── <i class="fas fa-folder"></i><span>laravel/ </span>
+ │
+ └── <i class="fas fa-folder"></i><span>Template/ </span>
+	│
+	└──<i class="fas fa-folder"></i><span> app/ </span>
+	│
+	└──<i class="fas fa-folder"></i><span> bootstrap/ </span>  
+	│
+	└──<i class="fas fa-folder"></i><span> config/ </span>
+	│
+	└──<i class="fas fa-folder"></i><span> database/ </span> 
+	│
+	└──<i class="fas fa-folder"></i><span> public/ </span>
+	│
+	└──<i class="fas fa-folder"></i><span> resources/ </span>
+	│
+	└──<i class="fas fa-folder"></i><span> routes/ </span>  
+	│
+	└──<i class="fas fa-folder"></i><span> storage/ </span>   
+	│
+	└──<i class="fas fa-folder"></i><span> tests/ </span>
+	  
+	   <i class="fas fa-file text-blue"></i><span>.editorconfig </span>
+	   
+	   <i class="fas fa-file text-blue"></i><span>.env.example </span>
+
+	   <i class="fas fa-file text-blue"></i><span>.gitattributes </span>
+
+	   <i class="fas fa-file text-blue"></i><span>.gitignore </span>
+
+	   <i class="fas fa-file text-blue"></i><span>README.md </span>
+
+	   <i class="fas fa-file text-blue"></i><span>artisan </span>
+
+	   <i class="fas fa-file text-blue"></i><span>composer.json </span>
+
+	   <i class="fas fa-file text-blue"></i><span>composer.lock </span>
+
+	   <i class="fas fa-file text-blue"></i><span>package-lock.json</span>
+
+	   <i class="fas fa-file text-blue"></i><span>package.json </span>
+
+	   <i class="fas fa-file text-blue"></i><span>phpunit.xml </span>
+
+	   <i class="fas fa-file text-blue"></i><span>vite.config.js </span>
+ │
+ └── <i class="fas fa-folder"></i><span>Template-rtl/ </span>
+│
+└── <i class="fas fa-folder"></i><span>documentation/ </span>
+
+       <i class="fas fa-file text-blue"></i><span>laravel.html</span>
+</pre>
+						</div>
+					</section>
+				
+						
+					<section id="credits" class="mb-30">
+						<h1>3. CREDITS</h1>
+						<p>We've used the following resources as listed. These are some awesome creation and we are thankful to the community.</p>
+						<ul class="credit-list">
+							<li><a target="_blank" href="http://getbootstrap.com/">Bootstrap</a></li>
+							<li><a target="_blank" href="https://jquery.com/">Jquery</a></li>
+							<li><a target="_blank" href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a></li>
+							<li><a target="_blank" href="https://select2.org/">Select2</a></li>
+							<li><a target="_blank" href="https://github.com/Eonasdan/bootstrap-datetimepicker">Date Timepicker</a></li>
+							<li><a target="_blank" href="http://www.google.com/fonts">Google Fonts</a></li>
+							<li><a target="_blank" href="https://morrisjs.github.io/morris.js/">Morris</a></li>
+							<li><a target="_blank" href="https://summernote.org/">Summernote</a></li>
+							<li><a target="_blank" href="http://fancybox.net/">Fancy Box</a></li>
+							<li><a target="_blank" href="https://www.dropzone.dev/js/">Dropzone Js</a></li>
+							<li><a target="_blank" href="https://jqueryui.com/">Jquery UI</a></li>
+							<li><a target="_blank" href="https://fullcalendar.io/">Full Calendar</a></li>
+							<li><a target="_blank" href="https://momentjs.com/">Moment JS</a></li> 
+							<li><a target="_blank" href="https://popper.js.org/">Popper JS</a></li>
+						</ul>
+					</section>
+					<section id="support" class="mb-30">
+						<h1>4. SUPPORT</h1>
+						<p class="mb-0">If you have any queries please contact us through email: <strong>business@dreamguys.co.in</strong>
+						</p>
+					</section>
+					<section id="thanks" class="mb-0">
+						<h1>5. THANK YOU</h1>
+						<p>Thank you so much for using this template</p>
+						<a target="_blank" href="https://themeforest.net/user/dreamguys"><strong>Dreamguy's Technologies Pvt Ltd,</strong></a>
+					</section>
+				</div>
+			</div>
+		
+			<!-- Footer -->
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-sm-12">
+							<p class="mb-0">© 2023 Preskool. All rights reserved.</p>
+						</div>
+						<a href="#" class="top-move"><i class="fas fa-arrow-up"></i></a>
+					</div>
+				</div>
+			</footer>
+			<!-- /footer -->
+				
+		</div>
+		<!-- /Main Wrapper -->
+		
+		<script src="assets/js/jquery-3.6.0.min.js"></script>
+		<script src="assets/js/bootstrap.bundle.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+		<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		
+		<script src="assets/js/script.js"></script>
+	
+		
+	</body>
+</html>
