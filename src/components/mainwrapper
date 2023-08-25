@@ -1,0 +1,30 @@
+import React from 'react';
+import { Link } from "react-router-dom";
+import FeatherIcon from "feather-icons-react";
+import {
+    logo, logosmall, headericon01, headericon05, avatar02, avatar11, avatar17,
+    avatar13, headericon04, avatar01, blog6, blog2, blog3, avatar03,
+    blog4, avatar04, blog5, avatar05, blog1, avatar06
+} from "../../imagepath";
+
+        
+
+            <>
+                <div className="main-wrapper">
+                    {/* Header */}
+                    
+                    {/* Sidebar */}
+                    {/* Page Wrapper */}
+
+                    <div class="page-wrapper">
+                        <div class="content container-fluid">
+                          {/* Page Header */}
+
+                        </div>
+                    </div>
+                    
+                    {/* /Page Wrapper */}
+                </div>
+                {/* /Main Wrapper */}
+                
+            </>
