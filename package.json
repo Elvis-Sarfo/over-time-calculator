@@ -10,6 +10,7 @@
   "author": "Dreamguy's",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bootstrap-icons": "^1.10.3",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
@@ -19,6 +20,7 @@
     "express-fileupload": "^1.2.1",
     "express-session": "^1.17.2",
     "mongoose": "^6.0.13",
+    "mysql2": "^3.6.0",
     "node-localstorage": "^2.2.1",
     "nodemon": "^2.0.15",
     "path": "^0.12.7"
@@ -28,6 +30,7 @@
     "@babel/preset-env": "^7.20.2",
     "@webpack-cli/generators": "^3.0.1",
     "babel-loader": "^9.1.2",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.3",
@@ -39,7 +42,6 @@
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1",
     "webpack-node-externals": "^3.0.0",
-    "workbox-webpack-plugin": "^6.5.4",
-    "copy-webpack-plugin": "^5.1.1"
+    "workbox-webpack-plugin": "^6.5.4"
   }
 }

@@ -5,14 +5,13 @@
         <li class="menu-title">
           <span>Main Menu</span>
         </li>
-        <li class="<%= ( active_path === routes.admin_dashboard || active_path === routes.teacher_dashboard || active_path ===routes.student_dashboard) && 'submenu active' %>">
-          <a href="#"><i class="feather-grid"></i> <span> Dashboard</span>
-            <span class="menu-arrow"></span
-          ></a>
-          <ul>
+        <li
+          class="<%= ( active_path === routes.admin_dashboard || active_path === routes.teacher_dashboard || active_path ===routes.student_dashboard) && 'submenu active' %>">
+          <a href="<%- routes.admin_dashboard %>"><i class="feather-grid"></i> <span> Dashboard</span>
+            <!-- <span class="menu-arrow"></span></a> -->
+          <!-- <ul>
             <li>
-              <a
-                href="<%- routes.admin_dashboard %>"
+              <a href="<%- routes.admin_dashboard %>"
                 class="<%= active_path==routes.admin_dashboard ? 'active' : '' %>">Admin Dashboard</a>
             </li>
             <li>
@@ -23,97 +22,94 @@
               <a href="<%- routes.student_dashboard %>"
                 class="<%= active_path==routes.student_dashboard ? 'active' : '' %>">Student Dashboard</a>
             </li>
-          </ul>
+          </ul> -->
         </li>
-        <li class="<%= ( active_path ===routes.students || active_path == routes.students_grid || active_path === routes.student_details || active_path ===routes.add_student || active_path ===routes.edit_student) && 'submenu active' %>">
-        <a href="#"
-            ><i class="fas fa-graduation-cap"></i> <span> Students</span>
-            <span class="menu-arrow"></span
-          ></a>
+        <li
+          class="<%= ( active_path ===routes.students || active_path == routes.students_grid || active_path === routes.student_details || active_path ===routes.add_student || active_path ===routes.edit_student) && 'submenu active' %>">
+          <a href="#"><i class="fas fa-graduation-cap"></i> <span> Users</span>
+            <span class="menu-arrow"></span></a>
           <ul>
             <li>
               <a href="<%- routes.students%>"
-                class="<%= active_path==routes.students || active_path == routes.students_grid ? 'active' : '' %>">Student List</a>
+                class="<%= active_path==routes.students || active_path == routes.students_grid ? 'active' : '' %>">Users List</a>
             </li>
             <li>
               <a href="<%- routes.student_details%>"
-              class="<%= active_path==routes.student_details ? 'active' : '' %>">Student View</a>
+                class="<%= active_path==routes.student_details ? 'active' : '' %>">View Users</a>
             </li>
             <li><a href="<%- routes.add_student%>"
-              class="<%= active_path==routes.add_student ? 'active' : '' %>">Student Add</a>
+                class="<%= active_path==routes.add_student ? 'active' : '' %>">Add User</a>
             </li>
             <li><a href="<%- routes.edit_student%>"
-              class="<%= active_path==routes.edit_student ? 'active' : '' %>">Student Edit</a></li>
+                class="<%= active_path==routes.edit_student ? 'active' : '' %>">Edit Users</a></li>
           </ul>
         </li>
-        <li class="<%= ( active_path ===routes.teachers|| active_path == routes.teachers_grid || active_path === routes.teacher_details || active_path ===routes.add_teacher || active_path ===routes.edit_teacher) && 'submenu active' %>">
-          <a href="#"
-            ><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span>
-            <span class="menu-arrow"></span
-          ></a>
+        <!-- <li
+          class="<%= ( active_path ===routes.teachers|| active_path == routes.teachers_grid || active_path === routes.teacher_details || active_path ===routes.add_teacher || active_path ===routes.edit_teacher) && 'submenu active' %>">
+          <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span>
+            <span class="menu-arrow"></span></a>
           <ul>
             <li><a href="<%- routes.teachers%>"
-              class="<%= active_path==routes.teachers || active_path == routes.teachers_grid ? 'active' : '' %>">Teacher List</a></li>
+                class="<%= active_path==routes.teachers || active_path == routes.teachers_grid ? 'active' : '' %>">Teacher
+                List</a></li>
             <li><a href="<%- routes.teacher_details%>"
-              class="<%= active_path==routes.teacher_details ? 'active' : '' %>">Teacher View</a></li>
+                class="<%= active_path==routes.teacher_details ? 'active' : '' %>">Teacher View</a></li>
             <li><a href="<%- routes.add_teacher%>"
-              class="<%= active_path==routes.add_teacher ? 'active' : '' %>">Teacher Add</a></li>
+                class="<%= active_path==routes.add_teacher ? 'active' : '' %>">Teacher Add</a></li>
             <li><a href="<%- routes.edit_teacher%>"
-              class="<%= active_path==routes.edit_teacher ? 'active' : '' %>">Teacher Edit</a></li>
+                class="<%= active_path==routes.edit_teacher ? 'active' : '' %>">Teacher Edit</a></li>
           </ul>
         </li>
-        <li class="<%= ( active_path ===routes.departments || active_path === routes.add_department || active_path ===routes.edit_department) && 'submenu active' %>">
-          <a href="#"
-            ><i class="fas fa-building"></i> <span> Departments</span>
-            <span class="menu-arrow"></span
-          ></a>
+        <li
+          class="<%= ( active_path ===routes.departments || active_path === routes.add_department || active_path ===routes.edit_department) && 'submenu active' %>">
+          <a href="#"><i class="fas fa-building"></i> <span> Departments</span>
+            <span class="menu-arrow"></span></a>
           <ul>
             <li><a href="<%- routes.departments%>"
-              class="<%= active_path==routes.departments ? 'active' : '' %>">Department List</a></li>
+                class="<%= active_path==routes.departments ? 'active' : '' %>">Department List</a></li>
             <li><a href="<%- routes.add_department%>"
-              class="<%= active_path==routes.add_department ? 'active' : '' %>">Department Add</a></li>
+                class="<%= active_path==routes.add_department ? 'active' : '' %>">Department Add</a></li>
             <li><a href="<%- routes.edit_department%>"
-              class="<%= active_path==routes.edit_department ? 'active' : '' %>">Department Edit</a></li>
+                class="<%= active_path==routes.edit_department ? 'active' : '' %>">Department Edit</a></li>
           </ul>
         </li>
-        <li class="<%= ( active_path ===routes.subjects || active_path === routes.add_subject || active_path ===routes.edit_subject) && 'submenu active' %>">
-          <a href="#"
-            ><i class="fas fa-book-reader"></i> <span> Subjects</span>
-            <span class="menu-arrow"></span
-          ></a>
+        <li
+          class="<%= ( active_path ===routes.subjects || active_path === routes.add_subject || active_path ===routes.edit_subject) && 'submenu active' %>">
+          <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span>
+            <span class="menu-arrow"></span></a>
           <ul>
-            <li><a href="<%- routes.subjects%>"
-              class="<%= active_path==routes.subjects ? 'active' : '' %>">Subject List</a></li>
+            <li><a href="<%- routes.subjects%>" class="<%= active_path==routes.subjects ? 'active' : '' %>">Subject
+                List</a></li>
             <li><a href="<%- routes.add_subject%>"
-              class="<%= active_path==routes.add_subject ? 'active' : '' %>">Subject Add</a></li>
+                class="<%= active_path==routes.add_subject ? 'active' : '' %>">Subject Add</a></li>
             <li><a href="<%- routes.edit_subject%>"
-              class="<%= active_path==routes.edit_subject ? 'active' : '' %>">Subject Edit</a></li>
+                class="<%= active_path==routes.edit_subject ? 'active' : '' %>">Subject Edit</a></li>
           </ul>
         </li>
         <li class="<%= ( active_path ===routes.invoices || active_path==routes.invoices_cancelled || active_path==routes.invoices_draft || active_path==routes.invoices_overdue
         || active_path==routes.invoices_paid|| active_path==routes.invoices_recurring  || active_path === routes.invoice_grid || active_path ===routes.add_invoice 
         || active_path ===routes.view_invoice || active_path ===routes.edit_invoice || active_path ===routes.invoices_settings || active_path==routes.tax_settings 
         || active_path==routes.bank_settings ) && 'submenu active' %>">
-          <a href="#"
-            ><i class="fas fa-clipboard"></i> <span> Invoices</span>
+          <a href="#"><i class="fas fa-clipboard"></i> <span> Invoices</span>
             <span class="menu-arrow"></span>
           </a>
           <ul>
             <li><a href="<%- routes.invoices%>"
-              class="<%= active_path==routes.invoices || active_path==routes.invoices_cancelled 
+                class="<%= active_path==routes.invoices || active_path==routes.invoices_cancelled 
               || active_path==routes.invoices_draft || active_path==routes.invoices_overdue
               || active_path==routes.invoices_paid|| active_path==routes.invoices_recurring ? 'active' : '' %>">Invoices List</a></li>
             <li><a href="<%- routes.invoice_grid%>"
-              class="<%= active_path==routes.invoice_grid ? 'active' : '' %>">Invoices Grid</a></li>
-            <li><a href="<%- routes.add_invoice%>"
-              class="<%= active_path==routes.add_invoice ? 'active' : '' %>">Add Invoices</a></li>
-            <li><a href="<%- routes.edit_invoice%>"
-              class="<%= active_path==routes.edit_invoice ? 'active' : '' %>">Edit Invoices</a></li>
+                class="<%= active_path==routes.invoice_grid ? 'active' : '' %>">Invoices Grid</a></li>
+            <li><a href="<%- routes.add_invoice%>" class="<%= active_path==routes.add_invoice ? 'active' : '' %>">Add
+                Invoices</a></li>
+            <li><a href="<%- routes.edit_invoice%>" class="<%= active_path==routes.edit_invoice ? 'active' : '' %>">Edit
+                Invoices</a></li>
             <li><a href="<%- routes.view_invoice%>"
-              class="<%= active_path==routes.view_invoice ? 'active' : '' %>">Invoices Details</a></li>
+                class="<%= active_path==routes.view_invoice ? 'active' : '' %>">Invoices Details</a></li>
             <li>
               <a href="<%- routes.invoices_settings%>"
-                class="<%= active_path==routes.invoices_settings || active_path==routes.tax_settings || active_path==routes.bank_settings ? 'active' : '' %>">Invoices Settings</a>
+                class="<%= active_path==routes.invoices_settings || active_path==routes.tax_settings || active_path==routes.bank_settings ? 'active' : '' %>">Invoices
+                Settings</a>
             </li>
           </ul>
         </li>
@@ -121,92 +117,88 @@
           <span>Management</span>
         </li>
 
-        <li class="<%= ( active_path ===routes.fees_collections || active_path === routes.expenses || active_path ===routes.salary || active_path ===routes.add_fees_collection || active_path ===routes.add_expenses || active_path ===routes.add_salary ) && 'submenu active' %>">
-          <a href="#"
-            ><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span>
-            <span class="menu-arrow"></span
-          ></a>
+        <li
+          class="<%= ( active_path ===routes.fees_collections || active_path === routes.expenses || active_path ===routes.salary || active_path ===routes.add_fees_collection || active_path ===routes.add_expenses || active_path ===routes.add_salary ) && 'submenu active' %>">
+          <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span>
+            <span class="menu-arrow"></span></a>
           <ul>
             <li><a href="<%- routes.fees_collections%>"
-              class="<%= active_path==routes.fees_collections ? 'active' : '' %>">Fees Collection</a></li>
-            <li><a href="<%- routes.expenses%>"
-              class="<%= active_path==routes.expenses ? 'active' : '' %>">Expenses</a></li>
-            <li><a href="<%- routes.salary%>"
-              class="<%= active_path==routes.salary ? 'active' : '' %>">Salary</a></li>
+                class="<%= active_path==routes.fees_collections ? 'active' : '' %>">Fees Collection</a></li>
+            <li><a href="<%- routes.expenses%>" class="<%= active_path==routes.expenses ? 'active' : '' %>">Expenses</a>
+            </li>
+            <li><a href="<%- routes.salary%>" class="<%= active_path==routes.salary ? 'active' : '' %>">Salary</a></li>
             <li><a href="<%- routes.add_fees_collection%>"
-              class="<%= active_path==routes.add_fees_collection ? 'active' : '' %>">Add Fees</a></li>
-            <li><a href="<%- routes.add_expenses%>"
-              class="<%= active_path==routes.add_expenses ? 'active' : '' %>">Add Expenses</a></li>
-            <li><a href="<%- routes.add_salary%>"
-              class="<%= active_path==routes.add_salary ? 'active' : '' %>">Add Salary</a></li>
+                class="<%= active_path==routes.add_fees_collection ? 'active' : '' %>">Add Fees</a></li>
+            <li><a href="<%- routes.add_expenses%>" class="<%= active_path==routes.add_expenses ? 'active' : '' %>">Add
+                Expenses</a></li>
+            <li><a href="<%- routes.add_salary%>" class="<%= active_path==routes.add_salary ? 'active' : '' %>">Add
+                Salary</a></li>
           </ul>
         </li>
         <li class="<%= active_path==routes.holiday || active_path == routes.add_holiday ? 'active' : '' %>">
           <a href="<%- routes.holiday%>">
-            <i class="fas fa-holly-berry"></i> <span>Holiday</span></a
-          >
+            <i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
         </li>
-        <li  class="<%= active_path==routes.fees || active_path==routes.add_fees || active_path === routes.edit_fees ? 'active' : '' %>">
+        <li
+          class="<%= active_path==routes.fees || active_path==routes.add_fees || active_path === routes.edit_fees ? 'active' : '' %>">
           <a href="<%- routes.fees%>">
-            <i class="fas fa-comment-dollar"></i> <span>Fees</span></a
-          >
+            <i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
         </li>
-        <li class="<%= active_path==routes.exam || active_path==routes.edit_exam || active_path === routes.add_exam ? 'active' : '' %>">
+        <li
+          class="<%= active_path==routes.exam || active_path==routes.edit_exam || active_path === routes.add_exam ? 'active' : '' %>">
           <a href="<%- routes.exam%>">
-            <i class="fas fa-clipboard-list"></i> <span>Exam list</span></a
-          >
+            <i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
         </li>
-        <li class="<%= active_path==routes.event || active_path === routes.add_events || active_path === routes.edit_events ? 'active' : '' %>">
+        <li
+          class="<%= active_path==routes.event || active_path === routes.add_events || active_path === routes.edit_events ? 'active' : '' %>">
           <a href="<%- routes.event%>">
-            <i class="fas fa-calendar-day"></i> <span>Events</span></a
-          >
+            <i class="fas fa-calendar-day"></i> <span>Events</span></a>
         </li>
-        <li  class="<%= active_path==routes.time_table || active_path === routes.add_time_table || active_path === routes.edit_time_table  ? 'active' : '' %>">
+        <li
+          class="<%= active_path==routes.time_table || active_path === routes.add_time_table || active_path === routes.edit_time_table  ? 'active' : '' %>">
           <a href="<%- routes.time_table%>">
-            <i class="fas fa-table"></i> <span>Time Table</span></a
-          >
+            <i class="fas fa-table"></i> <span>Time Table</span></a>
         </li>
-        <li class="<%= active_path==routes.library || active_path == routes.edit_books || active_path === routes.add_books  ? 'active' : '' %>">
-          <a href="<%- routes.library%>"><i class="fas fa-book"></i> <span>Library</span></a
-          >
+        <li
+          class="<%= active_path==routes.library || active_path == routes.edit_books || active_path === routes.add_books  ? 'active' : '' %>">
+          <a href="<%- routes.library%>"><i class="fas fa-book"></i> <span>Library</span></a>
         </li>
-        <li class="<%= ( active_path ===routes.blog || active_path === routes.blog_categories || active_path === routes.blog_details || active_path === routes.pending_blog  || active_path === routes.add_blog || active_path ===routes.edit_blog ) && 'submenu active' %>">
-          <a href="#"
-            ><i class="fa fa-newspaper"></i> <span> Blogs</span>
+        <li
+          class="<%= ( active_path ===routes.blog || active_path === routes.blog_categories || active_path === routes.blog_details || active_path === routes.pending_blog  || active_path === routes.add_blog || active_path ===routes.edit_blog ) && 'submenu active' %>">
+          <a href="#"><i class="fa fa-newspaper"></i> <span> Blogs</span>
             <span class="menu-arrow"></span>
           </a>
           <ul>
             <li><a href="<%- routes.blog%>"
-              class="<%= active_path==routes.blog || active_path === routes.pending_blog || active_path === routes.blog_categories || active_path === routes.blog_details ? 'active' : '' %>">All Blogs</a></li>
-            <li><a href="<%- routes.add_blog%>"
-              class="<%= active_path==routes.add_blog ? 'active' : '' %>">Add Blog</a></li>
-            <li><a href="<%- routes.edit_blog%>"
-              class="<%= active_path==routes.edit_blog ? 'active' : '' %>">Edit Blog</a></li>
+                class="<%= active_path==routes.blog || active_path === routes.pending_blog || active_path === routes.blog_categories || active_path === routes.blog_details ? 'active' : '' %>">All
+                Blogs</a></li>
+            <li><a href="<%- routes.add_blog%>" class="<%= active_path==routes.add_blog ? 'active' : '' %>">Add Blog</a>
+            </li>
+            <li><a href="<%- routes.edit_blog%>" class="<%= active_path==routes.edit_blog ? 'active' : '' %>">Edit
+                Blog</a></li>
           </ul>
         </li>
-        <li class="<%= active_path==routes.settings || active_path==routes.localization_details || active_path==routes.payment_settings || active_path==routes.email_settings || active_path==routes.social_settings || active_path==routes.social_links || active_path==routes.seo_settings || active_path==routes.others_settings  ? 'active' : '' %>">
+        <li
+          class="<%= active_path==routes.settings || active_path==routes.localization_details || active_path==routes.payment_settings || active_path==routes.email_settings || active_path==routes.social_settings || active_path==routes.social_links || active_path==routes.seo_settings || active_path==routes.others_settings  ? 'active' : '' %>">
           <a href="<%- routes.settings  %>">
-            <i class="fas fa-cog"></i> <span>Settings</span></a
-          >
+            <i class="fas fa-cog"></i> <span>Settings</span></a>
         </li>
         <li class="menu-title">
           <span>Pages</span>
         </li>
 
-        <li class="<%= ( active_path ===routes.login || active_path === routes.register || active_path ===routes.forgot_password || active_path ===routes.pageNotFount) && 'submenu active' %>">
-          <a href="#"
-            ><i class="fas fa-shield-alt"></i> <span> Authentication </span>
-            <span class="menu-arrow"></span
-          ></a>
+        <li
+          class="<%= ( active_path ===routes.login || active_path === routes.register || active_path ===routes.forgot_password || active_path ===routes.pageNotFount) && 'submenu active' %>">
+          <a href="#"><i class="fas fa-shield-alt"></i> <span> Authentication </span>
+            <span class="menu-arrow"></span></a>
           <ul>
-            <li><a href="<%- routes.login%>"
-              class="<%= active_path==routes.login ? 'active' : '' %>">Login</a></li>
-            <li><a href="<%- routes.register%>"
-              class="<%= active_path==routes.register ? 'active' : '' %>">Register</a></li>
+            <li><a href="<%- routes.login%>" class="<%= active_path==routes.login ? 'active' : '' %>">Login</a></li>
+            <li><a href="<%- routes.register%>" class="<%= active_path==routes.register ? 'active' : '' %>">Register</a>
+            </li>
             <li><a href="<%- routes.forgot_password%>"
-              class="<%= active_path==routes.forgot_password ? 'active' : '' %>">Forgot Password</a></li>
+                class="<%= active_path==routes.forgot_password ? 'active' : '' %>">Forgot Password</a></li>
             <li><a href="<%- routes.pageNotFount%>"
-              class="<%= active_path==routes.pageNotFount ? 'active' : '' %>">Error Page</a></li>
+                class="<%= active_path==routes.pageNotFount ? 'active' : '' %>">Error Page</a></li>
           </ul>
         </li>
         <li class="<%= active_path==routes.blank_page ? 'active' : '' %>">
@@ -218,231 +210,208 @@
           <span>Others</span>
         </li>
 
-        <li class="<%= active_path==routes.sports || active_path === routes.edit_sports || active_path === routes.add_sports ? 'active' : '' %>">
+        <li
+          class="<%= active_path==routes.sports || active_path === routes.edit_sports || active_path === routes.add_sports ? 'active' : '' %>">
           <a href="<%- routes.sports%>">
-            <i class="fas fa-baseball-ball"></i> <span>Sports</span></a
-          >
+            <i class="fas fa-baseball-ball"></i> <span>Sports</span></a>
         </li>
-        <li class="<%= active_path==routes.hostel || active_path === routes.add_room || active_path === routes.edit_room ? 'active' : '' %>">
+        <li
+          class="<%= active_path==routes.hostel || active_path === routes.add_room || active_path === routes.edit_room ? 'active' : '' %>">
           <a href="<%- routes.hostel%>">
-            <i class="fas fa-hotel"></i> <span>Hostel</span></a
-          >
+            <i class="fas fa-hotel"></i> <span>Hostel</span></a>
         </li>
-        <li  class="<%= active_path==routes.transport || active_path === routes.edit_transport || active_path === routes.add_transport ? 'active' : '' %>">
+        <li
+          class="<%= active_path==routes.transport || active_path === routes.edit_transport || active_path === routes.add_transport ? 'active' : '' %>">
           <a href="<%- routes.transport%>">
-            <i class="fas fa-bus"></i> <span>Transport</span></a
-          >
+            <i class="fas fa-bus"></i> <span>Transport</span></a>
         </li>
         <li class="menu-title">
           <span>UI Interface</span>
         </li>
-        <li class="<%= ( active_path ===routes.alerts || active_path === routes.accordions || active_path ===routes.avatar || active_path ===routes.badges
+        <li
+          class="<%= ( active_path ===routes.alerts || active_path === routes.accordions || active_path ===routes.avatar || active_path ===routes.badges
          || active_path ===routes.buttons|| active_path ===routes.buttongroup|| active_path ===routes.buttongroup|| active_path ===routes.breadcrumbs|| active_path ===routes.cards
          || active_path ===routes.carousel|| active_path ===routes.dropdowns|| active_path ===routes.grid|| active_path ===routes.images|| active_path ===routes.lightbox
          || active_path ===routes.media|| active_path ===routes.modal|| active_path ===routes.offcanvas|| active_path ===routes.pagination|| active_path ===routes.popover
          || active_path ===routes.progress|| active_path ===routes.placeholders|| active_path ===routes.rangeslider|| active_path ===routes.spinners|| active_path ===routes.sweetalerts
          || active_path ===routes.tab|| active_path ===routes.toastr || active_path ===routes.typography || active_path ===routes.video || active_path===routes.tooltip ) && 'submenu active' %>">
-          <a href="#"
-            ><i class="fab fa-get-pocket"></i> <span>Base UI </span>
-            <span class="menu-arrow"></span
-          ></a>
+          <a href="#"><i class="fab fa-get-pocket"></i> <span>Base UI </span>
+            <span class="menu-arrow"></span></a>
           <ul>
-            <li><a href="<%- routes.alerts%>"
-              class="<%= active_path==routes.alerts ? 'active' : '' %>">Alerts</a></li>
+            <li><a href="<%- routes.alerts%>" class="<%= active_path==routes.alerts ? 'active' : '' %>">Alerts</a></li>
             <li><a href="<%- routes.accordions%>"
-              class="<%= active_path==routes.accordions ? 'active' : '' %>">Accordions</a></li>
-            <li><a href="<%- routes.avatar%>"
-              class="<%= active_path==routes.avatar ? 'active' : '' %>">Avatar</a></li>
-            <li><a href="<%- routes.badges%>"
-              class="<%= active_path==routes.badges ? 'active' : '' %>">Badges</a></li>
-            <li><a href="<%- routes.buttons%>"
-              class="<%= active_path==routes.buttons ? 'active' : '' %>">Buttons</a></li>
-            <li><a href="<%- routes.buttongroup%>"
-              class="<%= active_path==routes.buttongroup ? 'active' : '' %>">Button Group</a></li>
+                class="<%= active_path==routes.accordions ? 'active' : '' %>">Accordions</a></li>
+            <li><a href="<%- routes.avatar%>" class="<%= active_path==routes.avatar ? 'active' : '' %>">Avatar</a></li>
+            <li><a href="<%- routes.badges%>" class="<%= active_path==routes.badges ? 'active' : '' %>">Badges</a></li>
+            <li><a href="<%- routes.buttons%>" class="<%= active_path==routes.buttons ? 'active' : '' %>">Buttons</a>
+            </li>
+            <li><a href="<%- routes.buttongroup%>" class="<%= active_path==routes.buttongroup ? 'active' : '' %>">Button
+                Group</a></li>
             <li><a href="<%- routes.breadcrumbs%>"
-              class="<%= active_path==routes.breadcrumbs ? 'active' : '' %>">Breadcrumb</a></li>
-            <li><a href="<%- routes.cards%>"
-              class="<%= active_path==routes.cards ? 'active' : '' %>">Cards</a></li>
-            <li><a href="<%- routes.carousel%>"
-              class="<%= active_path==routes.carousel ? 'active' : '' %>">Carousel</a></li>
+                class="<%= active_path==routes.breadcrumbs ? 'active' : '' %>">Breadcrumb</a></li>
+            <li><a href="<%- routes.cards%>" class="<%= active_path==routes.cards ? 'active' : '' %>">Cards</a></li>
+            <li><a href="<%- routes.carousel%>" class="<%= active_path==routes.carousel ? 'active' : '' %>">Carousel</a>
+            </li>
             <li><a href="<%- routes.dropdowns%>"
-              class="<%= active_path==routes.dropdowns ? 'active' : '' %>">Dropdowns</a></li>
-            <li><a href="<%- routes.grid%>"
-              class="<%= active_path==routes.grid ? 'active' : '' %>">Grid</a></li>
-            <li><a href="<%- routes.images%>"
-              class="<%= active_path==routes.images ? 'active' : '' %>">Images</a></li>
-            <li><a href="<%- routes.lightbox%>"
-              class="<%= active_path==routes.lightbox ? 'active' : '' %>">Lightbox</a></li>
-            <li><a href="<%- routes.media%>"
-              class="<%= active_path==routes.media ? 'active' : '' %>">Media</a></li>
-            <li><a href="<%- routes.modal%>"
-              class="<%= active_path==routes.modal ? 'active' : '' %>">Modals</a></li>
+                class="<%= active_path==routes.dropdowns ? 'active' : '' %>">Dropdowns</a></li>
+            <li><a href="<%- routes.grid%>" class="<%= active_path==routes.grid ? 'active' : '' %>">Grid</a></li>
+            <li><a href="<%- routes.images%>" class="<%= active_path==routes.images ? 'active' : '' %>">Images</a></li>
+            <li><a href="<%- routes.lightbox%>" class="<%= active_path==routes.lightbox ? 'active' : '' %>">Lightbox</a>
+            </li>
+            <li><a href="<%- routes.media%>" class="<%= active_path==routes.media ? 'active' : '' %>">Media</a></li>
+            <li><a href="<%- routes.modal%>" class="<%= active_path==routes.modal ? 'active' : '' %>">Modals</a></li>
             <li><a href="<%- routes.offcanvas%>"
-              class="<%= active_path==routes.offcanvas ? 'active' : '' %>">Offcanvas</a></li>
+                class="<%= active_path==routes.offcanvas ? 'active' : '' %>">Offcanvas</a></li>
             <li><a href="<%- routes.pagination%>"
-              class="<%= active_path==routes.pagination ? 'active' : '' %>">Pagination</a></li>
-            <li><a href="<%- routes.popover%>"
-              class="<%= active_path==routes.popover ? 'active' : '' %>">Popover</a></li>
-            <li><a href="<%- routes.progress%>"
-              class="<%= active_path==routes.progress ? 'active' : '' %>">Progress Bars</a></li>
+                class="<%= active_path==routes.pagination ? 'active' : '' %>">Pagination</a></li>
+            <li><a href="<%- routes.popover%>" class="<%= active_path==routes.popover ? 'active' : '' %>">Popover</a>
+            </li>
+            <li><a href="<%- routes.progress%>" class="<%= active_path==routes.progress ? 'active' : '' %>">Progress
+                Bars</a></li>
             <li><a href="<%- routes.placeholders%>"
-              class="<%= active_path==routes.placeholders ? 'active' : '' %>">Placeholders</a></li>
-            <li><a href="<%- routes.rangeslider%>"
-              class="<%= active_path==routes.rangeslider ? 'active' : '' %>">Range Slider</a></li>
-            <li><a href="<%- routes.spinners%>"
-              class="<%= active_path==routes.spinners ? 'active' : '' %>">Spinner</a></li>
-            <li><a href="<%- routes.sweetalerts%>"
-              class="<%= active_path==routes.sweetalerts ? 'active' : '' %>">Sweet Alerts</a></li>
-            <li><a href="<%- routes.tab%>"
-              class="<%= active_path==routes.tab ? 'active' : '' %>">Tabs</a></li>
-            <li><a href="<%- routes.toastr%>"
-              class="<%= active_path==routes.toastr ? 'active' : '' %>">Toasts</a></li>
-            <li><a href="<%- routes.tooltip%>"
-              class="<%= active_path==routes.tooltip ? 'active' : '' %>">Tooltip</a></li>
+                class="<%= active_path==routes.placeholders ? 'active' : '' %>">Placeholders</a></li>
+            <li><a href="<%- routes.rangeslider%>" class="<%= active_path==routes.rangeslider ? 'active' : '' %>">Range
+                Slider</a></li>
+            <li><a href="<%- routes.spinners%>" class="<%= active_path==routes.spinners ? 'active' : '' %>">Spinner</a>
+            </li>
+            <li><a href="<%- routes.sweetalerts%>" class="<%= active_path==routes.sweetalerts ? 'active' : '' %>">Sweet
+                Alerts</a></li>
+            <li><a href="<%- routes.tab%>" class="<%= active_path==routes.tab ? 'active' : '' %>">Tabs</a></li>
+            <li><a href="<%- routes.toastr%>" class="<%= active_path==routes.toastr ? 'active' : '' %>">Toasts</a></li>
+            <li><a href="<%- routes.tooltip%>" class="<%= active_path==routes.tooltip ? 'active' : '' %>">Tooltip</a>
+            </li>
             <li><a href="<%- routes.typography%>"
-              class="<%= active_path==routes.typography ? 'active' : '' %>">Typography</a></li>
-            <li><a href="<%- routes.video%>"
-              class="<%= active_path==routes.video ? 'active' : '' %>">Video</a></li>
+                class="<%= active_path==routes.typography ? 'active' : '' %>">Typography</a></li>
+            <li><a href="<%- routes.video%>" class="<%= active_path==routes.video ? 'active' : '' %>">Video</a></li>
           </ul>
         </li>
-        <li class="<%= ( active_path ===routes.ribbon || active_path === routes.clipboard || active_path ===routes.drag_drop || active_path ===routes.rating 
+        <li
+          class="<%= ( active_path ===routes.ribbon || active_path === routes.clipboard || active_path ===routes.drag_drop || active_path ===routes.rating 
          || active_path ===routes.text_editor || active_path ===routes.counter || active_path ===routes.scrollbar || active_path ===routes.notification
           || active_path ===routes.stickynote || active_path ===routes.timeline || active_path ===routes.horizontal_timeline || active_path ===routes.form_wizard) && 'submenu active' %>">
-          <a href="#"
-            ><i data-feather="box"></i> <span>Elements </span>
-            <span class="menu-arrow"></span
-          ></a>
+          <a href="#"><i data-feather="box"></i> <span>Elements </span>
+            <span class="menu-arrow"></span></a>
           <ul>
-            <li><a href="<%- routes.ribbon%>"
-              class="<%= active_path==routes.ribbon ? 'active' : '' %>">Ribbon</a></li>
+            <li><a href="<%- routes.ribbon%>" class="<%= active_path==routes.ribbon ? 'active' : '' %>">Ribbon</a></li>
             <li><a href="<%- routes.clipboard%>"
-              class="<%= active_path==routes.clipboard ? 'active' : '' %>">Clipboard</a></li>
-            <li><a href="<%- routes.drag_drop%>"
-              class="<%= active_path==routes.drag_drop ? 'active' : '' %>">Drag & Drop</a></li>
-            <li><a href="<%- routes.rating%>"
-              class="<%= active_path==routes.rating ? 'active' : '' %>">Rating</a></li>
-            <li><a href="<%- routes.text_editor%>"
-              class="<%= active_path==routes.text_editor ? 'active' : '' %>">Text Editor</a></li>
-            <li><a href="<%- routes.counter%>"
-              class="<%= active_path==routes.counter ? 'active' : '' %>">Counter</a></li>
+                class="<%= active_path==routes.clipboard ? 'active' : '' %>">Clipboard</a></li>
+            <li><a href="<%- routes.drag_drop%>" class="<%= active_path==routes.drag_drop ? 'active' : '' %>">Drag &
+                Drop</a></li>
+            <li><a href="<%- routes.rating%>" class="<%= active_path==routes.rating ? 'active' : '' %>">Rating</a></li>
+            <li><a href="<%- routes.text_editor%>" class="<%= active_path==routes.text_editor ? 'active' : '' %>">Text
+                Editor</a></li>
+            <li><a href="<%- routes.counter%>" class="<%= active_path==routes.counter ? 'active' : '' %>">Counter</a>
+            </li>
             <li><a href="<%- routes.scrollbar%>"
-              class="<%= active_path==routes.scrollbar ? 'active' : '' %>">Scrollbar</a></li>
+                class="<%= active_path==routes.scrollbar ? 'active' : '' %>">Scrollbar</a></li>
             <li><a href="<%- routes.notification%>"
-              class="<%= active_path==routes.notification ? 'active' : '' %>">Notification</a></li>
-            <li><a href="<%- routes.stickynote%>"
-              class="<%= active_path==routes.stickynote ? 'active' : '' %>">Sticky Note</a></li>
-            <li><a href="<%- routes.timeline%>"
-              class="<%= active_path==routes.timeline ? 'active' : '' %>">Timeline</a></li>
+                class="<%= active_path==routes.notification ? 'active' : '' %>">Notification</a></li>
+            <li><a href="<%- routes.stickynote%>" class="<%= active_path==routes.stickynote ? 'active' : '' %>">Sticky
+                Note</a></li>
+            <li><a href="<%- routes.timeline%>" class="<%= active_path==routes.timeline ? 'active' : '' %>">Timeline</a>
+            </li>
             <li>
               <a href="<%- routes.horizontal_timeline%>"
                 class="<%= active_path==routes.horizontal_timeline ? 'active' : '' %>">Horizontal Timeline</a>
             </li>
-            <li><a href="<%- routes.form_wizard%>"
-              class="<%= active_path==routes.form_wizard ? 'active' : '' %>">Form Wizard</a></li>
+            <li><a href="<%- routes.form_wizard%>" class="<%= active_path==routes.form_wizard ? 'active' : '' %>">Form
+                Wizard</a></li>
           </ul>
         </li>
-        <li class="<%= ( active_path ===routes.chart_apex || active_path === routes.chart_js || active_path ===routes.chart_morris 
+        <li
+          class="<%= ( active_path ===routes.chart_apex || active_path === routes.chart_js || active_path ===routes.chart_morris 
         || active_path ===routes.chart_flot  || active_path ===routes.chart_peity || active_path ===routes.chart_c3) && 'submenu active' %>">
-          <a href="#"
-            ><i data-feather="bar-chart-2"></i> <span> Charts </span>
-            <span class="menu-arrow"></span
-          ></a>
+          <a href="#"><i data-feather="bar-chart-2"></i> <span> Charts </span>
+            <span class="menu-arrow"></span></a>
           <ul>
-            <li><a href="<%- routes.chart_apex%>"
-              class="<%= active_path==routes.chart_apex ? 'active' : '' %>">Apex Charts</a></li>
-            <li><a href="<%- routes.chart_js%>"
-              class="<%= active_path==routes.chart_js ? 'active' : '' %>">Chart Js</a></li>
+            <li><a href="<%- routes.chart_apex%>" class="<%= active_path==routes.chart_apex ? 'active' : '' %>">Apex
+                Charts</a></li>
+            <li><a href="<%- routes.chart_js%>" class="<%= active_path==routes.chart_js ? 'active' : '' %>">Chart Js</a>
+            </li>
             <li><a href="<%- routes.chart_morris%>"
-              class="<%= active_path==routes.chart_morris ? 'active' : '' %>">Morris Charts</a></li>
-            <li><a href="<%- routes.chart_flot%>"
-              class="<%= active_path==routes.chart_flot ? 'active' : '' %>">Flot Charts</a></li>
-            <li><a href="<%- routes.chart_peity%>"
-              class="<%= active_path==routes.chart_peity ? 'active' : '' %>">Peity Charts</a></li>
-            <li><a href="<%- routes.chart_c3%>"
-              class="<%= active_path==routes.chart_c3 ? 'active' : '' %>">C3 Charts</a></li>
+                class="<%= active_path==routes.chart_morris ? 'active' : '' %>">Morris Charts</a></li>
+            <li><a href="<%- routes.chart_flot%>" class="<%= active_path==routes.chart_flot ? 'active' : '' %>">Flot
+                Charts</a></li>
+            <li><a href="<%- routes.chart_peity%>" class="<%= active_path==routes.chart_peity ? 'active' : '' %>">Peity
+                Charts</a></li>
+            <li><a href="<%- routes.chart_c3%>" class="<%= active_path==routes.chart_c3 ? 'active' : '' %>">C3
+                Charts</a></li>
           </ul>
         </li>
-        <li class="<%= ( active_path ===routes.icon_fontawesome || active_path === routes.icon_feather || active_path ===routes.icon_ionic 
+        <li
+          class="<%= ( active_path ===routes.icon_fontawesome || active_path === routes.icon_feather || active_path ===routes.icon_ionic 
         || active_path ===routes.icon_material || active_path ===routes.icon_pe7|| active_path ===routes.icon_simpleline
         || active_path ===routes.icon_themify|| active_path ===routes.icon_weather|| active_path ===routes.icon_typicon|| active_path ===routes.icon_flag) && 'submenu active' %>">
-          <a href="#"
-            ><i data-feather="award"></i> <span> Icons </span>
-            <span class="menu-arrow"></span
-          ></a>
+          <a href="#"><i data-feather="award"></i> <span> Icons </span>
+            <span class="menu-arrow"></span></a>
           <ul>
             <li><a href="<%- routes.icon_fontawesome%>"
-              class="<%= active_path==routes.icon_fontawesome ? 'active' : '' %>">Fontawesome Icons</a></li>
+                class="<%= active_path==routes.icon_fontawesome ? 'active' : '' %>">Fontawesome Icons</a></li>
             <li><a href="<%- routes.icon_feather%>"
-              class="<%= active_path==routes.icon_feather ? 'active' : '' %>">Feather Icons</a></li>
-            <li><a href="<%- routes.icon_ionic%>"
-              class="<%= active_path==routes.icon_ionic ? 'active' : '' %>">Ionic Icons</a></li>
+                class="<%= active_path==routes.icon_feather ? 'active' : '' %>">Feather Icons</a></li>
+            <li><a href="<%- routes.icon_ionic%>" class="<%= active_path==routes.icon_ionic ? 'active' : '' %>">Ionic
+                Icons</a></li>
             <li><a href="<%- routes.icon_material%>"
-              class="<%= active_path==routes.icon_material ? 'active' : '' %>">Material Icons</a></li>
-            <li><a href="<%- routes.icon_pe7%>"
-              class="<%= active_path==routes.icon_pe7 ? 'active' : '' %>">Pe7 Icons</a></li>
+                class="<%= active_path==routes.icon_material ? 'active' : '' %>">Material Icons</a></li>
+            <li><a href="<%- routes.icon_pe7%>" class="<%= active_path==routes.icon_pe7 ? 'active' : '' %>">Pe7
+                Icons</a></li>
             <li><a href="<%- routes.icon_simpleline%>"
-              class="<%= active_path==routes.icon_simpleline ? 'active' : '' %>">Simpleline Icons</a></li>
+                class="<%= active_path==routes.icon_simpleline ? 'active' : '' %>">Simpleline Icons</a></li>
             <li><a href="<%- routes.icon_themify%>"
-              class="<%= active_path==routes.icon_themify ? 'active' : '' %>">Themify Icons</a></li>
+                class="<%= active_path==routes.icon_themify ? 'active' : '' %>">Themify Icons</a></li>
             <li><a href="<%- routes.icon_weather%>"
-              class="<%= active_path==routes.icon_weather ? 'active' : '' %>">Weather Icons</a></li>
+                class="<%= active_path==routes.icon_weather ? 'active' : '' %>">Weather Icons</a></li>
             <li><a href="<%- routes.icon_typicon%>"
-              class="<%= active_path==routes.icon_typicon ? 'active' : '' %>">Typicon Icons</a></li>
-            <li><a href="<%- routes.icon_flag%>"
-              class="<%= active_path==routes.icon_flag ? 'active' : '' %>">Flag Icons</a></li>
+                class="<%= active_path==routes.icon_typicon ? 'active' : '' %>">Typicon Icons</a></li>
+            <li><a href="<%- routes.icon_flag%>" class="<%= active_path==routes.icon_flag ? 'active' : '' %>">Flag
+                Icons</a></li>
           </ul>
         </li>
-        <li class="<%= ( active_path ===routes.form_basic_inputs || active_path === routes.form_input_groups || active_path ===routes.form_horizontal 
+        <li
+          class="<%= ( active_path ===routes.form_basic_inputs || active_path === routes.form_input_groups || active_path ===routes.form_horizontal 
         || active_path ===routes.form_vertical || active_path ===routes.form_mask|| active_path ===routes.form_validation) && 'submenu active' %>">
-          <a href="#"
-            ><i class="fas fa-columns"></i> <span> Forms </span>
-            <span class="menu-arrow"></span
-          ></a>
+          <a href="#"><i class="fas fa-columns"></i> <span> Forms </span>
+            <span class="menu-arrow"></span></a>
           <ul>
             <li><a href="<%- routes.form_basic_inputs%>"
-              class="<%= active_path==routes.form_basic_inputs ? 'active' : '' %>">Basic Inputs </a></li>
+                class="<%= active_path==routes.form_basic_inputs ? 'active' : '' %>">Basic Inputs </a></li>
             <li><a href="<%- routes.form_input_groups%>"
-              class="<%= active_path==routes.form_input_groups ? 'active' : '' %>">Input Groups </a></li>
+                class="<%= active_path==routes.form_input_groups ? 'active' : '' %>">Input Groups </a></li>
             <li><a href="<%- routes.form_horizontal%>"
-              class="<%= active_path==routes.form_horizontal ? 'active' : '' %>">Horizontal Form </a></li>
-            <li><a href="<%- routes.form_vertical%>"
-              class="<%= active_path==routes.form_vertical ? 'active' : '' %>"> Vertical Form </a></li>
-            <li><a href="<%- routes.form_mask%>"
-              class="<%= active_path==routes.form_mask ? 'active' : '' %>"> Form Mask </a></li>
+                class="<%= active_path==routes.form_horizontal ? 'active' : '' %>">Horizontal Form </a></li>
+            <li><a href="<%- routes.form_vertical%>" class="<%= active_path==routes.form_vertical ? 'active' : '' %>">
+                Vertical Form </a></li>
+            <li><a href="<%- routes.form_mask%>" class="<%= active_path==routes.form_mask ? 'active' : '' %>"> Form Mask
+              </a></li>
             <li><a href="<%- routes.form_validation%>"
-              class="<%= active_path==routes.form_validation ? 'active' : '' %>"> Form Validation </a></li>
+                class="<%= active_path==routes.form_validation ? 'active' : '' %>"> Form Validation </a></li>
           </ul>
         </li>
-        <li class="<%= ( active_path ===routes.tables_basic || active_path === routes.data_tables) && 'submenu active' %>">
-          <a href="#"
-            ><i class="fas fa-table"></i> <span> Tables </span>
-            <span class="menu-arrow"></span
-          ></a>
+        <li
+          class="<%= ( active_path ===routes.tables_basic || active_path === routes.data_tables) && 'submenu active' %>">
+          <a href="#"><i class="fas fa-table"></i> <span> Tables </span>
+            <span class="menu-arrow"></span></a>
           <ul>
             <li><a href="<%- routes.tables_basic%>"
-              class="<%= active_path==routes.tables_basic ? 'active' : '' %>">Basic Tables </a></li>
-            <li><a href="<%- routes.data_tables%>"
-              class="<%= active_path==routes.data_tables ? 'active' : '' %>">Data Table </a></li>
+                class="<%= active_path==routes.tables_basic ? 'active' : '' %>">Basic Tables </a></li>
+            <li><a href="<%- routes.data_tables%>" class="<%= active_path==routes.data_tables ? 'active' : '' %>">Data
+                Table </a></li>
           </ul>
         </li>
         <li class='submenu'>
-          <a href="javascript:void(0);"
-            ><i class="fas fa-code"></i> <span>Multi Level</span>
-            <span class="menu-arrow"></span
-          ></a>
+          <a href="javascript:void(0);"><i class="fas fa-code"></i> <span>Multi Level</span>
+            <span class="menu-arrow"></span></a>
           <ul>
             <li class="submenu">
               <a href="javascript:void(0);">
-                <span>Level 1</span> <span class="menu-arrow"></span
-              ></a>
+                <span>Level 1</span> <span class="menu-arrow"></span></a>
               <ul>
                 <li>
                   <a href="javascript:void(0);"><span>Level 2</span></a>
                 </li>
                 <li class="submenu">
                   <a href="javascript:void(0);">
-                    <span> Level 2</span> <span class="menu-arrow"></span
-                  ></a>
+                    <span> Level 2</span> <span class="menu-arrow"></span></a>
                   <ul>
                     <li><a href="javascript:void(0);">Level 3</a></li>
                     <li><a href="javascript:void(0);">Level 3</a></li>
@@ -458,7 +427,7 @@
             </li>
           </ul>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </div>

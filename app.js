@@ -1,7 +1,9 @@
+'use strict;'
 const express = require("express");
 const app = express();
 const path = require("path");
 const route = require("./Routes/routes.routes");
+
 const expressLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const ejs = require("ejs").__express;
@@ -19,6 +21,7 @@ app.use(express.static(__dirname + "/public"));
 app.set("views", path.join(__dirname, "Views/Layouts"));
 
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 app.use(
   session({ resave: false, saveUninitialized: true, secret: "nodedemo" })
 );

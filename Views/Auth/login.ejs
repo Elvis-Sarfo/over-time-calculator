@@ -10,15 +10,15 @@
       </p>
       <h2>Sign in</h2>
       <!-- Form -->
-      <form action="<%- routes.admin_dashboard %>">
+      <form action="<%- routes.admin_dashboard %>" method="POST">
         <div class="form-group">
-          <label>Username <span class="login-danger">*</span></label>
-          <input class="form-control" type="text" />
+          <label>Email <span class="login-danger">*</span></label>
+          <input class="form-control" type="email" name="email" required/>
           <span class="profile-views"><i class="fas fa-user-circle"></i></span>
         </div>
         <div class="form-group">
           <label>Password <span class="login-danger">*</span></label>
-          <input class="form-control pass-input" type="text" />
+          <input class="form-control pass-input" type="password" name="password" required />
           <span class="profile-views feather-eye toggle-password"></span>
         </div>
         <div class="forgotpass">

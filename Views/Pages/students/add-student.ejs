@@ -4,10 +4,10 @@
     <div class="row align-items-center">
       <div class="col-sm-12">
         <div class="page-sub-header">
-          <h3 class="page-title">Add Students</h3>
+          <h3 class="page-title">Add User</h3>
           <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="students">Student</a></li>
-            <li class="breadcrumb-item active">Add Students</li>
+            <li class="breadcrumb-item"><a href="students">User</a></li>
+            <li class="breadcrumb-item active">Add User</li>
           </ul>
         </div>
       </div>
@@ -19,67 +19,75 @@
     <div class="col-sm-12">
       <div class="card comman-shadow">
         <div class="card-body">
-          <form>
+          <form id="add_user">
             <div class="row">
               <div class="col-12">
                 <h5 class="form-title student-info">
-                  Student Information <span><a href="javascript:;"></a></span>
+                  User Information <span><a href="javascript:;"></a></span>
                 </h5>
               </div>
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label>First Name <span class="login-danger">*</span></label>
+                  <label>NIC <span class="login-danger">*</span></label>
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter First Name"
+                    placeholder="Enter  NIC"
+                    id="nic"
+                    required
                   />
                 </div>
               </div>
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label>Last Name <span class="login-danger">*</span></label>
+                  <label>Name <span class="login-danger">*</span></label>
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter First Name"
+                    placeholder="Enter Name"
+                    id="name"
+                    required
                   />
                 </div>
               </div>
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label>Gender <span class="login-danger">*</span></label>
-                  <select class="form-control select">
-                    <option>Select Gender</option>
-                    <option>Female</option>
-                    <option>Male</option>
-                    <option>Others</option>
+                  <label>Department <span class="login-danger">*</span></label>
+                  <select class="form-control select" id="select" required>
+                    <option>Select Department</option>
+                    <option>Information Technology</option>
+                    <option>Accounting</option>
+                    <option>Management</option>
                   </select>
                 </div>
               </div>
               <div class="col-12 col-sm-4">
-                <div class="form-group local-forms calendar-icon">
+                <div class="form-group local-forms">
                   <label
-                    >Date Of Birth <span class="login-danger">*</span></label
+                    >Telephone <span class="login-danger">*</span></label
                   >
                   <input
-                    class="form-control datetimepicker"
+                    class="form-control"
                     type="text"
-                    placeholder="DD-MM-YYYY"
+                    placeholder="Enter phone number"
+                    id="phoneNum"
+                    required
                   />
                 </div>
               </div>
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label>Roll </label>
+                  <label>Email <span class="login-danger">*</span></label>
                   <input
                     class="form-control"
-                    type="text"
-                    placeholder="Enter Roll Number"
+                    type="email"
+                    placeholder="Enter Email"
+                    id="email"
+                    required
                   />
                 </div>
               </div>
-              <div class="col-12 col-sm-4">
+              <!-- <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
                   <label>Blood Group <span class="login-danger">*</span></label>
                   <select class="form-control select">
@@ -89,8 +97,8 @@
                     <option>O+</option>
                   </select>
                 </div>
-              </div>
-              <div class="col-12 col-sm-4">
+              </div> -->
+              <!-- <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
                   <label>Religion <span class="login-danger">*</span></label>
                   <select class="form-control select">
@@ -100,29 +108,31 @@
                     <option>Others</option>
                   </select>
                 </div>
-              </div>
+              </div> -->
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label>E-Mail <span class="login-danger">*</span></label>
+                  <label>Password <span class="login-danger">*</span></label>
                   <input
                     class="form-control"
-                    type="text"
-                    placeholder="Enter Email Address"
+                    type="password"
+                    placeholder="Enter password"
+                    id="password"
+                    required
                   />
                 </div>
               </div>
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label>Class <span class="login-danger">*</span></label>
-                  <select class="form-control select">
-                    <option>Please Select Class</option>
-                    <option>12</option>
-                    <option>11</option>
-                    <option>10</option>
+                  <label>Role <span class="login-danger">*</span></label>
+                  <select class="form-control select" id="select_role" required>
+                    <option>Please Select role</option>
+                    <option>class rep</option>
+                    <option>lecturer</option>
+                    <option>registrer</option>
                   </select>
                 </div>
               </div>
-              <div class="col-12 col-sm-4">
+              <!-- <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
                   <label>Section <span class="login-danger">*</span></label>
                   <select class="form-control select">
@@ -132,8 +142,8 @@
                     <option>C</option>
                   </select>
                 </div>
-              </div>
-              <div class="col-12 col-sm-4">
+              </div> -->
+              <!-- <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
                   <label>Admission ID </label>
                   <input
@@ -142,8 +152,8 @@
                     placeholder="Enter Admission ID"
                   />
                 </div>
-              </div>
-              <div class="col-12 col-sm-4">
+              </div> -->
+              <!-- <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
                   <label>Phone </label>
                   <input
@@ -152,8 +162,8 @@
                     placeholder="Enter Phone Number"
                   />
                 </div>
-              </div>
-              <div class="col-12 col-sm-4">
+              </div> -->
+              <!-- <div class="col-12 col-sm-4">
                 <div class="form-group students-up-files">
                   <label>Upload Student Photo (150px X 150px)</label>
                   <div class="uplod">
@@ -162,7 +172,7 @@
                     </label>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="col-12">
                 <div class="student-submit">
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -175,3 +185,56 @@
     </div>
   </div>
 </div>
+<script>
+    document.getElementById('add_user').addEventListener('submit',(e)=>{
+      e.preventDefault()
+      const formData=new FormData()
+      const nic=document.getElementById('nic').value
+      const name=document.getElementById('name').value
+      const department=document.getElementById('select').value
+      const phone=document.getElementById('phoneNum').value
+      const email=document.getElementById('email').value
+      const password=document.getElementById('password').value
+      const role=document.getElementById('select_role').value
+      // formData.append('nic',nic)
+      // formData.append('name',name)
+      // formData.append('department',department)
+      // formData.append('phone',phone)
+      // formData.append('email',email)
+      // formData.append('password',password)
+      // formData.append('role',role)
+      const userObj={
+        'nic':nic,
+        'name':name,
+        'department':department,
+        'telephone':phone,
+        'email':email,
+        'password':password,
+        'role':role
+      }
+      console.log('hello',nic,name,department,phone,email,password,role);
+
+      fetch('/register',{
+        method:"POST",
+        "headers":{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(userObj)
+
+      }).then(response=>{response.json()}).then(result=>{
+        Swal.fire({
+        title: "User Added Succesfully 😀",
+        confirmButtonClass: "btn btn-primary",
+        buttonsStyling: !1,
+    });
+      }).catch(error=>{
+        Swal.fire({
+        title: "Error Adding User😏",
+        confirmButtonClass: "btn btn-primary",
+        buttonsStyling: !1,
+    });
+      })
+      // location.reload()
+
+    })
+</script>

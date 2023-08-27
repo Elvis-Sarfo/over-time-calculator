@@ -1,7 +1,9 @@
+'use strict;'
 const express = require("express");
+const db=require('../config/dbcon')
 const route = express.Router();
 const public_routes = require("./public.routes");
-
+const bcrypt=require("bcryptjs")
 const index = "index";
 const index_without_nav = "index-without-nav";
 const index_error = "index-error";
@@ -59,6 +61,55 @@ route.get(public_routes.admin_dashboard, (req, res, next) => {
     page_path: "dashboard/admin",
   });
 });
+route.post(public_routes.admin_dashboard, (req, res, next) => {
+  console.log(req.body);
+  const {email,password}=req.body
+  try {
+    if(email,password){
+        const sql='SELECT * FROM users WHERE email=?'
+        db.query(sql,email,async(err,result)=>{
+            if(!err){
+                const passHash=result[0]['password']
+                const reqpassword=password
+                const verify=await bcrypt.compare(reqpassword,passHash)
+                if(verify){
+                    // req.session.isAuth=true
+                    // res.redirect('/dashboard')
+                    res.render(index, {
+                      title: "Dashboard",
+                      page_path: "dashboard/admin",
+                    });
+                }
+                else{
+                    console.log('Oops...');
+                }
+            }
+            console.log(err);
+        })
+    }
+    else{
+        console.log('all fields are required');
+    }
+} catch (error) {
+    console.log(error);
+}
+  // res.render(index, {
+  //   title: "Dashboard",
+  //   page_path: "dashboard/admin",
+  // });
+});
+route.post(public_routes.register,async(req,res,next)=>{
+  const {nic,name,department,telephone,email,password,role}=req.body
+  const sql='INSERT INTO users (nic,name,department,telephone,email,password,role) VALUES (?,?,?,?,?,?,?)';
+  const hashpass=await bcrypt.hash(password,12)
+  db.query(sql,[nic,name,department,telephone,email,hashpass,role],(err,result)=>{
+    if(err){
+      res.send(err)
+    }else{
+      res.send('created');
+    }
+  })
+})
 
 route.get(public_routes.teacher_dashboard, (req, res, next) => {
   res.render(index, {
