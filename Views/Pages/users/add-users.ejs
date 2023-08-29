@@ -1,0 +1,240 @@
+<div class="content container-fluid">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Add User</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="students">User</a></li>
+            <li class="breadcrumb-item active">Add User</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Header -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-body">
+          <form id="add_user">
+            <div class="row">
+              <div class="col-12">
+                <h5 class="form-title student-info">
+                  User Information <span><a href="javascript:;"></a></span>
+                </h5>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>NIC <span class="login-danger">*</span></label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter  NIC"
+                    id="nic"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Name <span class="login-danger">*</span></label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Name"
+                    id="name"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Department <span class="login-danger">*</span></label>
+                  <select class="form-control select" id="select" required>
+                    <option>Select Department</option>
+                    <option>Information Technology</option>
+                    <option>Accounting</option>
+                    <option>Management</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label
+                    >Telephone <span class="login-danger">*</span></label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter phone number"
+                    id="phoneNum"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Email <span class="login-danger">*</span></label>
+                  <input
+                    class="form-control"
+                    type="email"
+                    placeholder="Enter Email"
+                    id="email"
+                    required
+                  />
+                </div>
+              </div>
+              <!-- <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Blood Group <span class="login-danger">*</span></label>
+                  <select class="form-control select">
+                    <option>Please Select Group</option>
+                    <option>B+</option>
+                    <option>A+</option>
+                    <option>O+</option>
+                  </select>
+                </div>
+              </div> -->
+              <!-- <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Religion <span class="login-danger">*</span></label>
+                  <select class="form-control select">
+                    <option>Please Select Religion</option>
+                    <option>Hindu</option>
+                    <option>Christian</option>
+                    <option>Others</option>
+                  </select>
+                </div>
+              </div> -->
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Password <span class="login-danger">*</span></label>
+                  <input
+                    class="form-control"
+                    type="password"
+                    placeholder="Enter password"
+                    id="password"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Role <span class="login-danger">*</span></label>
+                  <select class="form-control select" id="select_role" required>
+                    <option>Please Select role</option>
+                    <option>class rep</option>
+                    <option>lecturer</option>
+                    <option>registrer</option>
+                  </select>
+                </div>
+              </div>
+              <!-- <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Section <span class="login-danger">*</span></label>
+                  <select class="form-control select">
+                    <option>Please Select Section</option>
+                    <option>B</option>
+                    <option>A</option>
+                    <option>C</option>
+                  </select>
+                </div>
+              </div> -->
+              <!-- <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Admission ID </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Admission ID"
+                  />
+                </div>
+              </div> -->
+              <!-- <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Phone </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Phone Number"
+                  />
+                </div>
+              </div> -->
+              <!-- <div class="col-12 col-sm-4">
+                <div class="form-group students-up-files">
+                  <label>Upload Student Photo (150px X 150px)</label>
+                  <div class="uplod">
+                    <label class="file-upload image-upbtn mb-0">
+                      Choose File <input type="file" />
+                    </label>
+                  </div>
+                </div>
+              </div> -->
+              <div class="col-12">
+                <div class="student-submit">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    document.getElementById('add_user').addEventListener('submit',(e)=>{
+      e.preventDefault()
+      const formData=new FormData()
+      const nic=document.getElementById('nic').value
+      const name=document.getElementById('name').value
+      const department=document.getElementById('select').value
+      const phone=document.getElementById('phoneNum').value
+      const email=document.getElementById('email').value
+      const password=document.getElementById('password').value
+      const role=document.getElementById('select_role').value
+      // formData.append('nic',nic)
+      // formData.append('name',name)
+      // formData.append('department',department)
+      // formData.append('phone',phone)
+      // formData.append('email',email)
+      // formData.append('password',password)
+      // formData.append('role',role)
+      const userObj={
+        'nic':nic,
+        'name':name,
+        'department':department,
+        'telephone':phone,
+        'email':email,
+        'password':password,
+        'role':role
+      }
+      console.log('hello',nic,name,department,phone,email,password,role);
+
+      fetch('/register',{
+        method:"POST",
+        "headers":{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(userObj)
+
+      }).then(response=>{response.json()}).then(result=>{
+        Swal.fire({
+        title: "User Added Succesfully 😀",
+        confirmButtonClass: "btn btn-primary",
+        buttonsStyling: !1,
+    });
+      }).catch(error=>{
+        Swal.fire({
+        title: "Error Adding User😏",
+        confirmButtonClass: "btn btn-primary",
+        buttonsStyling: !1,
+    });
+      })
+      // location.reload()
+
+    })
+</script>

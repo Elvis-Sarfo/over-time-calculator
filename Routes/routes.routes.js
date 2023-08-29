@@ -4,10 +4,29 @@ const db=require('../config/dbcon')
 const route = express.Router();
 const public_routes = require("./public.routes");
 const bcrypt=require("bcryptjs")
+const session=require('express-session')
+const MysqlStore=require('express-mysql-session')(session)
+const {isAuth,isAuthorized}=require('../config/authMiddlewares')
 const index = "index";
 const index_without_nav = "index-without-nav";
 const index_error = "index-error";
-
+// ========================================
+const sessionStore=new MysqlStore({
+  host:process.env.HOSTNAME,
+  user:process.env.USER,
+  password:process.env.PASSWORD,
+  database:process.env.DATABASE,
+  clearExpired:true,
+  checkExpirationInterval:900000,
+  expiration:86400000
+})
+route.use(session({
+  secret:"overtime1234",
+  resave:false,
+  saveUninitialized:false,
+  store:sessionStore
+}))
+// ========================================
 route.use(function (req, res, next) {
   let url_replace_options = req.url.replace("?", "").replace("/", "");
   let routes = {};
@@ -28,6 +47,40 @@ route.get(public_routes.login, (req, res, next) => {
     layout: index_without_nav,
     page_path: "login",
   });
+});
+route.post(public_routes.login, (req, res, next) => {
+  console.log(req.body);
+  const {email,password}=req.body
+  try {
+    if(email,password){
+        const sql='SELECT * FROM users WHERE email=?'
+        db.query(sql,email,async(err,result)=>{
+            if(!err){
+                const passHash=result[0]['password']                
+                const verify=await bcrypt.compare(password,passHash)
+                if(verify){
+                    req.session.isAuth=true
+                    req.session.authorization=result[0]['role']
+                    console.log(req.session);
+                    // res.render(index, {
+                    //   title: "Dashboard",
+                    //   page_path: "dashboard/admin",
+                    // });
+                    res.redirect(public_routes.admin_dashboard)
+                }
+                else{
+                    console.log('Oops...');
+                }
+            }
+            console.log(err);
+        })
+    }
+    else{
+        console.log('all fields are required');
+    }
+} catch (error) {
+    console.log(error);
+}
 });
 
 route.get(public_routes.register, (req, res, next) => {
@@ -55,48 +108,18 @@ route.get(public_routes.blank_page, (req, res, next) => {
 
 // ---------------( Main menu ) -------------------
 
-route.get(public_routes.admin_dashboard, (req, res, next) => {
+route.get(public_routes.admin_dashboard, isAuth,isAuthorized,(req, res, next) => {
   res.render(index, {
     title: "Dashboard",
     page_path: "dashboard/admin",
   });
+  console.log(isAuthorized);
 });
 route.post(public_routes.admin_dashboard, (req, res, next) => {
-  console.log(req.body);
-  const {email,password}=req.body
-  try {
-    if(email,password){
-        const sql='SELECT * FROM users WHERE email=?'
-        db.query(sql,email,async(err,result)=>{
-            if(!err){
-                const passHash=result[0]['password']
-                const reqpassword=password
-                const verify=await bcrypt.compare(reqpassword,passHash)
-                if(verify){
-                    // req.session.isAuth=true
-                    // res.redirect('/dashboard')
-                    res.render(index, {
-                      title: "Dashboard",
-                      page_path: "dashboard/admin",
-                    });
-                }
-                else{
-                    console.log('Oops...');
-                }
-            }
-            console.log(err);
-        })
-    }
-    else{
-        console.log('all fields are required');
-    }
-} catch (error) {
-    console.log(error);
-}
-  // res.render(index, {
-  //   title: "Dashboard",
-  //   page_path: "dashboard/admin",
-  // });
+  res.render(index, {
+    title: "Dashboard",
+    page_path: "dashboard/admin",
+  });
 });
 route.post(public_routes.register,async(req,res,next)=>{
   const {nic,name,department,telephone,email,password,role}=req.body
@@ -118,45 +141,57 @@ route.get(public_routes.teacher_dashboard, (req, res, next) => {
   });
 });
 
-route.get(public_routes.student_dashboard, (req, res, next) => {
+route.get(public_routes.users_dashboard, (req, res, next) => {
   res.render(index, {
-    title: "Student-dashboard",
-    page_path: "dashboard/student-dashboard",
+    title: "users-dashboard",
+    page_path: "dashboard/users-dashboard",
+
+  });
+  
+});
+
+route.get(public_routes.users, (req, res, next) => {
+ 
+  const sql='SELECT * FROM users;'
+  db.query(sql,(error,result)=>{
+    if(error){
+      console.error(error)
+    }
+    else{
+      res.render(index, {
+        title: "users",
+        page_path: "users/users",
+        user:result
+      });
+    }
+  })
+});
+
+route.get(public_routes.users_grid, (req, res, next) => {
+  res.render(index, {
+    title: "users",
+    page_path: "users/users-grid",
   });
 });
 
-route.get(public_routes.students, (req, res, next) => {
+route.get(public_routes.users_details, (req, res, next) => {
   res.render(index, {
-    title: "Students",
-    page_path: "students/students",
+    title: "users-details",
+    page_path: "users/users-details",
   });
 });
 
-route.get(public_routes.students_grid, (req, res, next) => {
+route.get(public_routes.add_users, (req, res, next) => {
   res.render(index, {
-    title: "Students",
-    page_path: "students/students-grid",
+    title: "users",
+    page_path: "users/add-users",
   });
 });
 
-route.get(public_routes.student_details, (req, res, next) => {
+route.get(public_routes.edit_users, (req, res, next) => {
   res.render(index, {
-    title: "Student-details",
-    page_path: "students/student-details",
-  });
-});
-
-route.get(public_routes.add_student, (req, res, next) => {
-  res.render(index, {
-    title: "Students",
-    page_path: "students/add-student",
-  });
-});
-
-route.get(public_routes.edit_student, (req, res, next) => {
-  res.render(index, {
-    title: "Students",
-    page_path: "students/edit-student",
+    title: "users",
+    page_path: "users/edit-users",
   });
 });
 
@@ -407,24 +442,24 @@ route.get(public_routes.edit_fees, (req, res, next) => {
   });
 });
 
-route.get(public_routes.exam, (req, res, next) => {
+route.get(public_routes.claim, (req, res, next) => {
   res.render(index, {
-    title: "Exam",
-    page_path: "exam/exam",
+    title: "claim",
+    page_path: "claim/claim",
   });
 });
 
-route.get(public_routes.add_exam, (req, res, next) => {
+route.get(public_routes.add_claim, (req, res, next) => {
   res.render(index, {
-    title: "Exam",
-    page_path: "exam/add-exam",
+    title: "claim",
+    page_path: "claim/add-claim",
   });
 });
-
-route.get(public_routes.edit_exam, (req, res, next) => {
+// TODO add_claim
+route.get(public_routes.edit_claim, (req, res, next) => {
   res.render(index, {
-    title: "Exam",
-    page_path: "exam/edit-exam",
+    title: "claim",
+    page_path: "claim/edit-claim",
   });
 });
 

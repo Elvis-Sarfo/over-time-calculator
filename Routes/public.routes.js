@@ -4,17 +4,17 @@ public_routes.admin_dashboard = "/index";
 
 public_routes.teacher_dashboard = "/teacher-dashboard";
 
-public_routes.student_dashboard = "/student-dashboard";
+public_routes.users_dashboard = "/users-dashboard";
 
-public_routes.students = "/students";
+public_routes.users = "/users";
 
-public_routes.students_grid = "/students-grid";
+public_routes.users_grid = "/users-grid";
 
-public_routes.student_details = "/student-details";
+public_routes.users_details = "/users-details";
 
-public_routes.add_student = "/add-student";
+public_routes.add_users = "/add-users";
 
-public_routes.edit_student = "/edit-student";
+public_routes.edit_users = "/edit-users";
 
 public_routes.teachers = "/teachers";
 
@@ -88,11 +88,11 @@ public_routes.add_fees= "/add-fees";
 
 public_routes.edit_fees= "/edit-fees";
 
-public_routes.exam= "/exam";
+public_routes.claim= "/claim";
 
-public_routes.add_exam= "/add-exam";
+public_routes.add_claim= "/add-claim";
 
-public_routes.edit_exam= "/edit-exam";
+public_routes.edit_claim= "/edit-claim";
 
 public_routes.event= "/event";
 

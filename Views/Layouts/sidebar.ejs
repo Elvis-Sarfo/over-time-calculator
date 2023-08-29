@@ -6,7 +6,7 @@
           <span>Main Menu</span>
         </li>
         <li
-          class="<%= ( active_path === routes.admin_dashboard || active_path === routes.teacher_dashboard || active_path ===routes.student_dashboard) && 'submenu active' %>">
+          class="<%= ( active_path === routes.admin_dashboard || active_path === routes.teacher_dashboard || active_path ===routes.users_dashboard) && 'submenu active' %>">
           <a href="<%- routes.admin_dashboard %>"><i class="feather-grid"></i> <span> Dashboard</span>
             <!-- <span class="menu-arrow"></span></a> -->
           <!-- <ul>
@@ -19,29 +19,29 @@
                 class="<%= active_path==routes.teacher_dashboard ? 'active' : '' %>">Teacher Dashboard</a>
             </li>
             <li>
-              <a href="<%- routes.student_dashboard %>"
-                class="<%= active_path==routes.student_dashboard ? 'active' : '' %>">Student Dashboard</a>
+              <a href="<%- routes.users_dashboard %>"
+                class="<%= active_path==routes.users_dashboard ? 'active' : '' %>">users Dashboard</a>
             </li>
           </ul> -->
         </li>
         <li
-          class="<%= ( active_path ===routes.students || active_path == routes.students_grid || active_path === routes.student_details || active_path ===routes.add_student || active_path ===routes.edit_student) && 'submenu active' %>">
+          class="<%= ( active_path ===routes.users || active_path == routes.users_grid || active_path === routes.users_details || active_path ===routes.add_users || active_path ===routes.edit_users) && 'submenu active' %>">
           <a href="#"><i class="fas fa-graduation-cap"></i> <span> Users</span>
             <span class="menu-arrow"></span></a>
           <ul>
             <li>
-              <a href="<%- routes.students%>"
-                class="<%= active_path==routes.students || active_path == routes.students_grid ? 'active' : '' %>">Users List</a>
+              <a href="<%- routes.users%>"
+                class="<%= active_path==routes.users || active_path == routes.users_grid ? 'active' : '' %>">Users List</a>
             </li>
-            <li>
-              <a href="<%- routes.student_details%>"
-                class="<%= active_path==routes.student_details ? 'active' : '' %>">View Users</a>
+            <!-- <li>
+              <a href="<%- routes.users_details%>"
+                class="<%= active_path==routes.users_details ? 'active' : '' %>">View Users</a>
+            </li> -->
+            <li><a href="<%- routes.add_users%>"
+                class="<%= active_path==routes.add_users ? 'active' : '' %>">Add User</a>
             </li>
-            <li><a href="<%- routes.add_student%>"
-                class="<%= active_path==routes.add_student ? 'active' : '' %>">Add User</a>
-            </li>
-            <li><a href="<%- routes.edit_student%>"
-                class="<%= active_path==routes.edit_student ? 'active' : '' %>">Edit Users</a></li>
+            <!-- <li><a href="<%- routes.edit_users%>"
+                class="<%= active_path==routes.edit_users ? 'active' : '' %>">Edit Users</a></li> -->
           </ul>
         </li>
         <!-- <li
@@ -143,13 +143,13 @@
           class="<%= active_path==routes.fees || active_path==routes.add_fees || active_path === routes.edit_fees ? 'active' : '' %>">
           <a href="<%- routes.fees%>">
             <i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
-        </li>
+        </li>-->
         <li
-          class="<%= active_path==routes.exam || active_path==routes.edit_exam || active_path === routes.add_exam ? 'active' : '' %>">
-          <a href="<%- routes.exam%>">
-            <i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+          class="<%= active_path==routes.claim || active_path==routes.edit_claim || active_path === routes.add_claim ? 'active' : '' %>">
+          <a href="<%- routes.claim%>">
+            <i class="fas fa-clipboard-list"></i> <span>Claim</span></a>
         </li>
-        <li
+      <!-- <li
           class="<%= active_path==routes.event || active_path === routes.add_events || active_path === routes.edit_events ? 'active' : '' %>">
           <a href="<%- routes.event%>">
             <i class="fas fa-calendar-day"></i> <span>Events</span></a>
