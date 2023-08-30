@@ -144,6 +144,8 @@ public_routes.others_settings= "/others-settings";
 
 public_routes.login = "/login";
 
+public_routes.logout = "/logout";
+
 public_routes.register = "/register";
 
 public_routes.forgot_password = "/forgot-password";
