@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2023 at 10:03 AM
+-- Generation Time: Aug 31, 2023 at 07:52 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -93,6 +93,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`nic`, `name`, `designation`, `department`, `telephone`, `email`, `password`, `role`) VALUES
+(0, 'Andoh Jeffery', 'Administrator', 'Administration', '0123456789', 'admin@email.com', '$2a$12$wsQ3zUIePjo7p9rbaUNROO6T3JwExY8E7D4g4TLoCemsCVDjXUX2a', 'admin'),
 (200036057, 'Amoah', NULL, 'Management', '0247846842', 'amoah@gmail.com', '$2a$12$mxAbto5l3Ai0dbiP2LasjuiNBD834sYZqoh1UGpyZ3CK4JKqwe0Iu', 'registrer'),
 (200036122, 'Troy Lynx', NULL, 'Info Tech', '553231829', 'troy@gmail.com', '$2a$12$3LPhuHAVJNSPshnaueWIv.dO9DL69cRN4bTdFyEoUZqeOrCEvU706', 'lecturer');
 
