@@ -1,17 +1,18 @@
 'use strict;'
-const mysql=require('mysql2')
+const mysql = require('mysql2')
 require('dotenv').config()
-const connection=mysql.createConnection({
-    host:process.env.HOSTNAME,
-    user:process.env.USER,
-    database:process.env.DATABASE,
-    password:process.env.PASSWORD
+const connection = mysql.createConnection({
+    host: process.env.HOSTNAME,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    database: process.env.DATABASE,
+    password: process.env.PASSWORD
 })
-connection.connect(err=>{
-    if(err){
+connection.connect(err => {
+    if (err) {
         console.error(err)
-    }else{
+    } else {
         console.log('connected to db...');
     }
 })
-module.exports=connection;
+module.exports = connection;
