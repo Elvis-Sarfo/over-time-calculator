@@ -1,0 +1,117 @@
+<%user.forEach(user=>{%>
+
+
+<div class="content container-fluid">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col">
+        <h3 class="page-title">Add Claim</h3>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="claim">Claim</a></li>
+          <li class="breadcrumb-item active">Add Claim</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Header -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <form id="claim_form">
+            <div class="row">
+              <div class="col-12">
+                <h5 class="form-title"><span><b>AKENTEN APPIAH-MENKA UNIVERSITY of SKILLS TRAINING and ENTREPRENEURIAL DEVELOPMENT</b></span></h5>
+                <center><h5><span>E08- CLAIM FORM FOR EXTRA TEACHING LOAD</span></h5></center>
+                <h5>Part A - Details of Claimant</h5>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" value="<%=user.name%>" disabled/>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Designation</label>
+                  <input type="text" class="form-control" id="designation" value="<%=user.designation%>" disabled>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Staff Number</label>
+                  <input type="text" class="form-control" id="stfNumber" value="<%=user.nic%>" disabled/>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Telephone Number</label>
+                  <input type="text" class="form-control" value="<%=user.telephone%>" disabled/>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Faculty/Department</label>
+                  <input type="text" class="form-control" value="<%=user.department%>" disabled/>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Academic Year</label>
+                  <input type="text" class="form-control" id="year"/>
+                </div>
+              </div>
+              <!-- <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Event Date</label>
+                  <input type="date" class="form-control" />
+                </div>
+              </div> -->
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%})%>
+<script>
+  document.getElementById('claim_form').addEventListener('submit',(e)=>{
+    e.preventDefault()
+    const staffNumber=document.getElementById('stfNumber').value
+    const designation=document.getElementById('designation').value
+    const year=document.getElementById('year').value
+    console.log(staffNumber,designation,year)
+    const claimObj={
+      'lecturer_id':staffNumber,
+      // 'designation':designation,
+      // 'academicYear':year
+    }
+
+    fetch('/add-claim',{
+      method:'POST',
+      "headers":{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(claimObj)
+    }).then(response=>{response.json()})
+    .then(result=>{
+      Swal.fire({
+        title: "Claim Added Succesfully 😀",
+        confirmButtonClass: "btn btn-primary",
+        buttonsStyling: !1,
+    });
+    }).catch(error=>{
+      Swal.fire({
+        title: "Error Adding Claim😏",
+        confirmButtonClass: "btn btn-primary",
+        buttonsStyling: !1,
+    });
+    })
+      })
+</script>
