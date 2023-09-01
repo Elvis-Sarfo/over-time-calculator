@@ -1,30 +1,30 @@
 'use strict;'
 const express = require("express");
-const db=require('../config/dbcon')
+const db = require('../config/dbcon')
 const route = express.Router();
 const public_routes = require("./public.routes");
-const bcrypt=require("bcryptjs")
-const session=require('express-session')
-const MysqlStore=require('express-mysql-session')(session)
-const {isAuth,isAuthorized}=require('../config/authMiddlewares')
+const bcrypt = require("bcryptjs")
+const session = require('express-session')
+const MysqlStore = require('express-mysql-session')(session)
+const { isAuth, isAuthorized } = require('../config/authMiddlewares')
 const index = "index";
 const index_without_nav = "index-without-nav";
 const index_error = "index-error";
 // ========================================
-const sessionStore=new MysqlStore({
-  host:process.env.HOSTNAME,
-  user:process.env.USER,
-  password:process.env.PASSWORD,
-  database:process.env.DATABASE,
-  clearExpired:true,
-  checkExpirationInterval:900000,
-  expiration:86400000
+const sessionStore = new MysqlStore({
+  host: process.env.HOSTNAME,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
+  clearExpired: true,
+  checkExpirationInterval: 900000,
+  expiration: 86400000
 })
 route.use(session({
-  secret:"overtime1234",
-  resave:false,
-  saveUninitialized:false,
-  store:sessionStore
+  secret: "overtime1234",
+  resave: false,
+  saveUninitialized: false,
+  store: sessionStore
 }))
 // ========================================
 route.use(function (req, res, next) {
@@ -50,37 +50,37 @@ route.get(public_routes.login, (req, res, next) => {
 });
 route.post(public_routes.login, (req, res, next) => {
   console.log(req.body);
-  const {email,password}=req.body
+  const { email, password } = req.body
   try {
-    if(email,password){
-        const sql='SELECT * FROM users WHERE email=?'
-        db.query(sql,email,async(err,result)=>{
-            if(!err){
-                const passHash=result[0]['password']                
-                const verify=await bcrypt.compare(password,passHash)
-                if(verify){
-                    req.session.isAuth=true
-                    req.session.authorization=result[0]['role']
-                    console.log(req.session);
-                    // res.render(index, {
-                    //   title: "Dashboard",
-                    //   page_path: "dashboard/admin",
-                    // });
-                    res.redirect(public_routes.admin_dashboard)
-                }
-                else{
-                    console.log('Oops...');
-                }
-            }
-            console.log(err);
-        })
+    if (email, password) {
+      const sql = 'SELECT * FROM users WHERE email=?'
+      db.query(sql, email, async (err, result) => {
+        if (!err) {
+          const passHash = result[0]['password']
+          const verify = await bcrypt.compare(password, passHash)
+          if (verify) {
+            req.session.isAuth = true
+            req.session.authorization = result[0]['role']
+            console.log(req.session);
+            // res.render(index, {
+            //   title: "Dashboard",
+            //   page_path: "dashboard/admin",
+            // });
+            res.redirect(public_routes.admin_dashboard)
+          }
+          else {
+            console.log('Oops...');
+          }
+        }
+        console.log(err);
+      })
     }
-    else{
-        console.log('all fields are required');
+    else {
+      console.log('all fields are required');
     }
-} catch (error) {
+  } catch (error) {
     console.log(error);
-}
+  }
 });
 
 route.get(public_routes.register, (req, res, next) => {
@@ -108,7 +108,7 @@ route.get(public_routes.blank_page, (req, res, next) => {
 
 // ---------------( Main menu ) -------------------
 
-route.get(public_routes.admin_dashboard, isAuth,isAuthorized,(req, res, next) => {
+route.get(public_routes.admin_dashboard, isAuth, isAuthorized, (req, res, next) => {
   res.render(index, {
     title: "Dashboard",
     page_path: "dashboard/admin",
@@ -121,14 +121,14 @@ route.post(public_routes.admin_dashboard, (req, res, next) => {
     page_path: "dashboard/admin",
   });
 });
-route.post(public_routes.register,async(req,res,next)=>{
-  const {nic,name,department,telephone,email,password,role}=req.body
-  const sql='INSERT INTO users (nic,name,department,telephone,email,password,role) VALUES (?,?,?,?,?,?,?)';
-  const hashpass=await bcrypt.hash(password,12)
-  db.query(sql,[nic,name,department,telephone,email,hashpass,role],(err,result)=>{
-    if(err){
+route.post(public_routes.register, async (req, res, next) => {
+  const { nic, name, department, telephone, email, password, role } = req.body
+  const sql = 'INSERT INTO users (nic,name,department,telephone,email,password,role) VALUES (?,?,?,?,?,?,?)';
+  const hashpass = await bcrypt.hash(password, 12)
+  db.query(sql, [nic, name, department, telephone, email, hashpass, role], (err, result) => {
+    if (err) {
       res.send(err)
-    }else{
+    } else {
       res.send('created');
     }
   })
@@ -147,21 +147,21 @@ route.get(public_routes.users_dashboard, (req, res, next) => {
     page_path: "dashboard/users-dashboard",
 
   });
-  
+
 });
 
 route.get(public_routes.users, (req, res, next) => {
- 
-  const sql='SELECT * FROM users;'
-  db.query(sql,(error,result)=>{
-    if(error){
+
+  const sql = 'SELECT * FROM users;'
+  db.query(sql, (error, result) => {
+    if (error) {
       console.error(error)
     }
-    else{
+    else {
       res.render(index, {
         title: "users",
         page_path: "users/users",
-        user:result
+        user: result
       });
     }
   })
@@ -460,6 +460,13 @@ route.get(public_routes.edit_claim, (req, res, next) => {
   res.render(index, {
     title: "claim",
     page_path: "claim/edit-claim",
+  });
+});
+
+route.get(public_routes.view_claim, (req, res, next) => {
+  res.render(index, {
+    title: "claim",
+    page_path: "claim/view-claim",
   });
 });
 

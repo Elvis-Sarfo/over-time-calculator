@@ -94,6 +94,8 @@ public_routes.add_claim= "/add-claim";
 
 public_routes.edit_claim= "/edit-claim";
 
+public_routes.view_claim= "/view-claim";
+
 public_routes.event= "/event";
 
 public_routes.edit_events= "/edit-events";
