@@ -3,10 +3,9 @@ const express = require("express");
 const db = require('../config/dbcon')
 const route = express.Router();
 const public_routes = require("./public.routes");
-const bcrypt = require("bcryptjs")
-const session = require('express-session')
-const MysqlStore = require('express-mysql-session')(session)
-const { isAuth, isAuthorized } = require('../config/authMiddlewares')
+const bcrypt=require("bcryptjs")
+const session=require('express-session')
+const MysqlStore=require('express-mysql-session')(session)
 const index = "index";
 const index_without_nav = "index-without-nav";
 const index_error = "index-error";
@@ -21,11 +20,26 @@ const sessionStore = new MysqlStore({
   expiration: 86400000
 })
 route.use(session({
-  secret: "overtime1234",
-  resave: false,
-  saveUninitialized: false,
-  store: sessionStore
+  name:'overtimeSession',
+  secret:"overtime1234",
+  resave:false,
+  saveUninitialized:false,
+  store:sessionStore
 }))
+// ========================================
+const isAuth=(req,res,next)=>{
+  try {
+      if(req.session.isAuth){
+          next()
+      }else{
+          res.redirect(public_routes.login)
+      }
+  } catch (error) {
+      
+  }
+}
+// =======================================
+
 // ========================================
 route.use(function (req, res, next) {
   let url_replace_options = req.url.replace("?", "").replace("/", "");
@@ -48,32 +62,44 @@ route.get(public_routes.login, (req, res, next) => {
     page_path: "login",
   });
 });
+route.get(public_routes.logout, (req, res, next) => {
+  req.session.destroy(error=>{
+    if(error){
+      console.log(error);
+    }
+    else{
+      res.clearCookie('overtimeSession')
+      res.redirect(public_routes.login)
+    }
+  })
+});
 route.post(public_routes.login, (req, res, next) => {
   console.log(req.body);
   const { email, password } = req.body
   try {
-    if (email, password) {
-      const sql = 'SELECT * FROM users WHERE email=?'
-      db.query(sql, email, async (err, result) => {
-        if (!err) {
-          const passHash = result[0]['password']
-          const verify = await bcrypt.compare(password, passHash)
-          if (verify) {
-            req.session.isAuth = true
-            req.session.authorization = result[0]['role']
-            console.log(req.session);
-            // res.render(index, {
-            //   title: "Dashboard",
-            //   page_path: "dashboard/admin",
-            // });
-            res.redirect(public_routes.admin_dashboard)
-          }
-          else {
-            console.log('Oops...');
-          }
-        }
-        console.log(err);
-      })
+    if(email,password){
+        const sql='SELECT * FROM users WHERE email=?'
+        db.query(sql,email,async(err,result)=>{
+            if(!err){
+                const passHash=result[0]['password']                
+                const verify=await bcrypt.compare(password,passHash)
+                if(verify){
+                    req.session.isAuth=true
+                    req.session.authorization=result[0]['role']
+                    console.log(req.session);
+                    // res.render(index, {
+                    //   title: "Dashboard",
+                    //   page_path: "dashboard/admin",
+                    // });
+                    res.redirect(public_routes.admin_dashboard)
+                }
+                else{
+                    console.log('Oops...');
+                    res.redirect(public_routes.login)
+                }
+            }
+            console.log(err);
+        })
     }
     else {
       console.log('all fields are required');
@@ -108,25 +134,32 @@ route.get(public_routes.blank_page, (req, res, next) => {
 
 // ---------------( Main menu ) -------------------
 
-route.get(public_routes.admin_dashboard, isAuth, isAuthorized, (req, res, next) => {
-  res.render(index, {
-    title: "Dashboard",
-    page_path: "dashboard/admin",
-  });
-  console.log(isAuthorized);
+route.get(public_routes.admin_dashboard,isAuth,(req, res, next) => {
+  const sql='SELECT * FROM users WHERE role=?'
+  db.query(sql,req.session.authorization,(error,result)=>{
+    if(error){
+      res.send(error)
+    }else{
+      res.render(index, {
+        title: "Dashboard",
+        page_path: "dashboard/admin",
+        user:result
+      });
+    }
+  })
 });
-route.post(public_routes.admin_dashboard, (req, res, next) => {
-  res.render(index, {
-    title: "Dashboard",
-    page_path: "dashboard/admin",
-  });
-});
-route.post(public_routes.register, async (req, res, next) => {
-  const { nic, name, department, telephone, email, password, role } = req.body
-  const sql = 'INSERT INTO users (nic,name,department,telephone,email,password,role) VALUES (?,?,?,?,?,?,?)';
-  const hashpass = await bcrypt.hash(password, 12)
-  db.query(sql, [nic, name, department, telephone, email, hashpass, role], (err, result) => {
-    if (err) {
+// route.post(public_routes.admin_dashboard, (req, res, next) => {
+//   res.render(index, {
+//     title: "Dashboard",
+//     page_path: "dashboard/admin",
+//   });
+// });
+route.post(public_routes.register,async(req,res,next)=>{
+  const {nic,name,designation,department,telephone,email,password,role}=req.body
+  const sql='INSERT INTO users (nic,name,designation,department,telephone,email,password,role) VALUES (?,?,?,?,?,?,?,?)';
+  const hashpass=await bcrypt.hash(password,12)
+  db.query(sql,[nic,name,designation,department,telephone,email,hashpass,role],(err,result)=>{
+    if(err){
       res.send(err)
     } else {
       res.send('created');
@@ -151,18 +184,37 @@ route.get(public_routes.users_dashboard, (req, res, next) => {
 });
 
 route.get(public_routes.users, (req, res, next) => {
-
-  const sql = 'SELECT * FROM users;'
-  db.query(sql, (error, result) => {
-    if (error) {
+//  function getMe(){
+//   const sql='SELECT * FROM users WHERE role=?'
+//   db.query(sql,req.session.authorization,(error,result)=>{
+//     if(error){
+//       console.error(error)
+//     }
+//     return result
+//   })
+//  }
+ 
+  const sql='SELECT * FROM users;'
+  db.query(sql,(error,result)=>{
+    if(error){
       console.error(error)
     }
-    else {
-      res.render(index, {
-        title: "users",
-        page_path: "users/users",
-        user: result
-      });
+    else{
+      const sql='SELECT * FROM users WHERE role=?'
+      db.query(sql,req.session.authorization,(error,secondresult)=>{
+        if(error){
+          console.log(error);
+        }
+        else{
+          res.render(index, {
+            title: "users",
+            page_path: "users/users",
+            userRes:result,
+            user:secondresult
+          });
+        }
+      })
+     
     }
   })
 });
@@ -182,12 +234,43 @@ route.get(public_routes.users_details, (req, res, next) => {
 });
 
 route.get(public_routes.add_users, (req, res, next) => {
-  res.render(index, {
-    title: "users",
-    page_path: "users/add-users",
-  });
+  const sql='SELECT * FROM users;'
+  db.query(sql,(error,result)=>{
+    if(error){
+      console.error(error)
+    }
+    else{
+      const sql='SELECT * FROM users WHERE role=?'
+      db.query(sql,req.session.authorization,(error,secondresult)=>{
+        if(error){
+          console.log(error);
+        }
+        else{
+          res.render(index, {
+            title: "users",
+            page_path: "users/add-users",
+            userRes:result,
+            user:secondresult
+          });
+        }
+      })
+     
+    }
+  })
+  // const sql='SELECT * FROM users;'
+  // db.query(sql,(error,result)=>{
+  //   if(error){
+  //     console.error(error)
+  //   }
+  //       else{
+  //         res.render(index, {
+  //           title: "users",
+  //           page_path: "users/add-users",
+  //           user:result,
+  //         });
+  //       }
+  //     })
 });
-
 route.get(public_routes.edit_users, (req, res, next) => {
   res.render(index, {
     title: "users",
@@ -443,19 +526,56 @@ route.get(public_routes.edit_fees, (req, res, next) => {
 });
 
 route.get(public_routes.claim, (req, res, next) => {
-  res.render(index, {
-    title: "claim",
-    page_path: "claim/claim",
-  });
+  const sql='SELECT * FROM users WHERE role=?'
+  db.query(sql,req.session.authorization,(error,result)=>{
+    if(error){
+      res.send(error)
+    }else{
+      const sql='SELECT users.nic,users.designation,claims.approved_by,claims.approval_status,claims.id FROM users,claims WHERE users.nic=lecturer_id'
+      db.query(sql,(error,relresult)=>{
+        if(!error){
+          res.render(index, {
+            title: "claim",
+            page_path: "claim/claim",
+            user:result,
+            reluser:relresult
+          });
+        }else{console.error(error)}
+      })
+      
+    }
+  })
+ 
 });
 
 route.get(public_routes.add_claim, (req, res, next) => {
-  res.render(index, {
-    title: "claim",
-    page_path: "claim/add-claim",
-  });
+  const sql='SELECT * FROM users WHERE role=?'
+  db.query(sql,req.session.authorization,(error,result)=>{
+    if(error){
+      res.send(error)
+    }else{
+      res.render(index, {
+        title: "claim",
+        page_path: "claim/add-claim",
+        user:result
+      });
+    }
+  })
+ 
 });
 // TODO add_claim
+route.post(public_routes.add_claim,(req,res,next)=>{
+  const {lecturer_id}=req.body;
+  const sql='INSERT INTO claims (lecturer_id) VALUES (?)'
+  db.query(sql,[lecturer_id],(error,result)=>{
+    if(error){
+      console.error(error)
+    }else{
+      res.send('added')
+    }
+  })
+})
+
 route.get(public_routes.edit_claim, (req, res, next) => {
   res.render(index, {
     title: "claim",
@@ -463,12 +583,22 @@ route.get(public_routes.edit_claim, (req, res, next) => {
   });
 });
 
-route.get(public_routes.view_claim, (req, res, next) => {
-  res.render(index, {
-    title: "claim",
-    page_path: "claim/view-claim",
-  });
-});
+// LESSONS
+
+route.get(public_routes.lesson,(req,res,next)=>{
+  const sql='SELECT * FROM users WHERE role=?'
+  db.query(sql,req.session.authorization,(error,result)=>{
+    if(error){
+      console.error(error)
+    }else{
+      res.render(index,{
+        title:'Lessons',
+        page_path:'lesson/add-lesson',
+        user:result
+      });
+    }
+  })
+})
 
 route.get(public_routes.event, (req, res, next) => {
   res.render(index, {

@@ -1,3 +1,6 @@
+<%user.forEach(user=>{%>
+
+
 <div class="content container-fluid">
   <!-- Page Header -->
   <div class="page-header">
@@ -27,31 +30,31 @@
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                   <label>Name</label>
-                  <input type="text" class="form-control" />
+                  <input type="text" class="form-control" value="<%=user.name%>" disabled/>
                 </div>
               </div>
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                   <label>Designation</label>
-                  <input type="text" class="form-control" id="designation">
+                  <input type="text" class="form-control" id="designation" value="<%=user.designation%>" disabled>
                 </div>
               </div>
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                   <label>Staff Number</label>
-                  <input type="text" class="form-control" id="stfNumber" />
+                  <input type="text" class="form-control" id="stfNumber" value="<%=user.nic%>" disabled/>
                 </div>
               </div>
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                   <label>Telephone Number</label>
-                  <input type="text" class="form-control" />
+                  <input type="text" class="form-control" value="<%=user.telephone%>" disabled/>
                 </div>
               </div>
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                   <label>Faculty/Department</label>
-                  <input type="text" class="form-control" />
+                  <input type="text" class="form-control" value="<%=user.department%>" disabled/>
                 </div>
               </div>
               <div class="col-12 col-sm-6">
@@ -76,6 +79,7 @@
     </div>
   </div>
 </div>
+<%})%>
 <script>
   document.getElementById('claim_form').addEventListener('submit',(e)=>{
     e.preventDefault()
@@ -84,9 +88,9 @@
     const year=document.getElementById('year').value
     console.log(staffNumber,designation,year)
     const claimObj={
-      'userID':staffNumber,
-      'designation':designation,
-      'academicYear':year
+      'lecturer_id':staffNumber,
+      // 'designation':designation,
+      // 'academicYear':year
     }
 
     fetch('/add-claim',{

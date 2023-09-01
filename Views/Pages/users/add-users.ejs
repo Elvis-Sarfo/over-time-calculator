@@ -52,9 +52,22 @@
               </div>
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
+                  <label>Designation <span class="login-danger">*</span></label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Designation"
+                    id="designation"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
                   <label>Department <span class="login-danger">*</span></label>
                   <select class="form-control select" id="select" required>
                     <option>Select Department</option>
+                    <option>Administration</option>
                     <option>Information Technology</option>
                     <option>Accounting</option>
                     <option>Management</option>
@@ -126,6 +139,7 @@
                   <label>Role <span class="login-danger">*</span></label>
                   <select class="form-control select" id="select_role" required>
                     <option>Please Select role</option>
+                    <option>admin</option>
                     <option>class rep</option>
                     <option>lecturer</option>
                     <option>registrer</option>
@@ -191,6 +205,7 @@
       const formData=new FormData()
       const nic=document.getElementById('nic').value
       const name=document.getElementById('name').value
+      const designation=document.getElementById('designation').value
       const department=document.getElementById('select').value
       const phone=document.getElementById('phoneNum').value
       const email=document.getElementById('email').value
@@ -206,6 +221,7 @@
       const userObj={
         'nic':nic,
         'name':name,
+        'designation':designation,
         'department':department,
         'telephone':phone,
         'email':email,
