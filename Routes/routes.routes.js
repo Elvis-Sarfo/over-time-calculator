@@ -531,7 +531,7 @@ route.get(public_routes.claim, (req, res, next) => {
     if(error){
       res.send(error)
     }else{
-      const sql='SELECT users.nic,users.designation,claims.approved_by,claims.id FROM users,claims WHERE users.nic=lecturer_id'
+      const sql='SELECT users.nic,users.designation,claims.approved_by,claims.approval_status,claims.id FROM users,claims WHERE users.nic=lecturer_id'
       db.query(sql,(error,relresult)=>{
         if(!error){
           res.render(index, {
@@ -582,6 +582,23 @@ route.get(public_routes.edit_claim, (req, res, next) => {
     page_path: "claim/edit-claim",
   });
 });
+
+// LESSONS
+
+route.get(public_routes.lesson,(req,res,next)=>{
+  const sql='SELECT * FROM users WHERE role=?'
+  db.query(sql,req.session.authorization,(error,result)=>{
+    if(error){
+      console.error(error)
+    }else{
+      res.render(index,{
+        title:'Lessons',
+        page_path:'lesson/add-lesson',
+        user:result
+      });
+    }
+  })
+})
 
 route.get(public_routes.event, (req, res, next) => {
   res.render(index, {

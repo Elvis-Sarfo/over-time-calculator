@@ -151,6 +151,8 @@ public_routes.register = "/register";
 public_routes.forgot_password = "/forgot-password";
 
 public_routes.blank_page = "/blank-page";
+// -------------( Lessons ) ----------------
+public_routes.lesson="/lesson";
 
 // ------------- ( Others ) ----------------
 
