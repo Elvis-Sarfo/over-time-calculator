@@ -10,6 +10,8 @@ const ejs = require("ejs").__express;
 
 require('dotenv').config('config.env')
 
+const readDocFile = require("./utils/readDocFiles")
+
 const fs = require("fs");
 var https = require("https");
 
@@ -32,6 +34,9 @@ app.engine("ejs", ejs);
 app.use(expressLayouts);
 
 app.use("/", route);
+
+
+ readDocFile();
 
 // --------- ( For deployment use ) ------------
 
