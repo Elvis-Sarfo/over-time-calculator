@@ -62,10 +62,14 @@
                       >
                         <i class="feather-eye"></i>
                       </a> -->
-                      <button type="button"
+                      
+                      <a href="lesson" class="btn btn-sm bg-danger-light">
+                        <i class="feather-plus"></i>
+                      </a>
+                      <!-- <button type="button"
                         class="btn btn-info mt-1"
                         data-bs-toggle="modal"
-                        data-bs-target="#bs-example-modal-lg"><i class="feather-plus"></i></button>
+                        data-bs-target="#bs-example-modal-lg"><i class="feather-plus"></i></button> -->
                     </div>
                   </td>
                 </tr>
@@ -80,68 +84,7 @@
 </div>
 
 <!-- MODAL -->
-<div
-class="modal fade"
-id="bs-example-modal-lg"
-tabindex="-1"
-role="dialog"
-aria-labelledby="myLargeModalLabel"
-aria-hidden="true"
->
-<div class="modal-dialog modal-lg">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title" id="myLargeModalLabel">
-        Add Lesson
-      </h4>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="modal"
-        aria-label="Close"
-      ></button>
-    </div>
-    <div class="modal-body">
-      <form action="" class="form-group" style="padding: 10px;" id="lessonForm">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row" style="padding: 10px;">
-              <label for="">Date</label>
-              <input type="date" class="form-control" id="lessonDate" required>
-            </div>
-            <div class="row" style="padding: 10px;">
-              <label for="">Time</label>
-              <input type="time" class="form-control" id="time" required>
-            </div>
-            <div class="row" style="padding: 10px;">
-              <label for="">Course Code</label>
-              <input type="text" class="form-control" id="courseCode" required>
-            </div>
-          </div>
 
-          <div class="col-md-6">
-            <div class="row" style="padding: 10px;">
-              <label for="">Class</label>
-              <input type="text" class="form-control" id="class" required>
-            </div>
-            <div class="row" style="padding: 10px;">
-              <label for="">Credit Hourse</label>
-              <input type="number" class="form-control" id="creditHours">
-            </div>
-            <!-- <div class="row">
-              <label for="">Course Code</label>
-              <input type="text" class="form-control" id="courseCode">
-            </div> -->
-          </div>
-        </div>
-        <input type="submit" class="btn btn-primary w-100" value="Add lesson">
-        </form>
-    </div>
-  </div>
-  <!-- /.modal-content -->
-</div>
-<!-- /.modal-dialog -->
-</div>
 
 <!-- SCRIPT -->
 <script>

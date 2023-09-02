@@ -593,11 +593,21 @@ route.get(public_routes.lesson,(req,res,next)=>{
     if(error){
       console.error(error)
     }else{
-      res.render(index,{
-        title:'Lessons',
-        page_path:'lesson/add-lesson',
-        user:result
-      });
+      const sql='SELECT * FROM lesson'
+      db.query(sql,(error,relresult)=>{
+        if(error){
+          console.log(error);
+        }
+        else{
+          res.render(index,{
+            title:'Lessons',
+            page_path:'lesson/add-lesson',
+            user:result,
+            reluser:relresult
+          });
+        }
+      })
+      
     }
   })
 })
