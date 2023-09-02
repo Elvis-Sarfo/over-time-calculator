@@ -6,6 +6,7 @@ const public_routes = require("./public.routes");
 const bcrypt=require("bcryptjs")
 const session=require('express-session')
 const MysqlStore=require('express-mysql-session')(session)
+const moment=require('moment')
 const index = "index";
 const index_without_nav = "index-without-nav";
 const index_error = "index-error";
@@ -571,6 +572,7 @@ route.post(public_routes.add_claim,(req,res,next)=>{
     if(error){
       console.error(error)
     }else{
+      // res.redirect('add-claim',)
       res.send('added')
     }
   })
@@ -596,6 +598,24 @@ route.get(public_routes.lesson,(req,res,next)=>{
         page_path:'lesson/add-lesson',
         user:result
       });
+    }
+  })
+})
+route.post(public_routes.lesson,(req,res,next)=>{
+  const{date,time,course_code,credit_hours,lecturer_id,claim_id}=req.body
+  console.log(req.body);
+  // const mysqldate=moment(date,'MM/DD/YYYY').format('YYYY:MM:DD')
+  const sql='INSERT INTO lesson (date,time,course_code,credit_hours,lecturer_id,claim_id) VALUES (?,?,?,?,?,?)'
+  db.query(sql,[date,time,course_code,credit_hours,lecturer_id,claim_id],(error,result)=>{
+    if(error){
+      console.error(error)
+    }else{
+      // res.render(index,{
+      //   title:'Lessons',
+      //   page_path:'lesson/add-lesson',
+      //   user:result
+      // });
+      res.json('lesson added ')
     }
   })
 })
