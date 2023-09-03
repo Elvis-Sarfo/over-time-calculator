@@ -236,23 +236,30 @@
             <div class="invoice-add-table">
               <h4>Lesson Details</h4>
               <div class="table-responsive">
-                <table class="table table-center add-table-items">
+                <!-- <table class="table table-center add-table-items"> -->
+                  <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                   <thead>
                     <tr>
                       <th>Date</th>
                       <th>Time</th>
                       <th>Course Code</th>
                       <!-- <th>Lecture</th> -->
-                      <th>Class</th>
                       <th>Credit Hours</th>
+                      <th>Approved By</th>
                       <!-- <th>Status</th> -->
-                      <th>Actions</th>
+                      <!-- <th>Actions</th> -->
                       
                     </tr>
                   </thead>
                   <tbody>
+                    <%reluser.forEach(user=>{%>
                     <tr class="add-row">
-                      <td>
+                      <td><%=user.date%></td>
+                      <td><%=user.time%></td>
+                      <td><%=user.course_code%></td>
+                      <td><%=user.credit_hours%></td>
+                      <td><%=user.approved_by%></td>
+                      <!-- <td>
                         <input type="date" class="form-control" />
                       </td>
                       <td>
@@ -261,18 +268,18 @@
                       <td>
                         <input type="text" class="form-control" />
                       </td>
-                      <!-- <td>
-                        <input type="text" class="form-control" />
-                      </td> -->
-                      <td>
+                       <td>
                         <input type="text" class="form-control" />
                       </td>
                       <td>
                         <input type="text" class="form-control" />
                       </td>
-                      <!-- <td>
+                      <td>
+                        <input type="text" class="form-control" />
+                      </td>
+                      <td>
 
-                      </td> -->
+                      </td>
                       <td class="add-remove text-end">
                         <a href="javascript:void(0);" class="add-btn me-2"
                           ><i class="fas fa-plus-circle"></i
@@ -282,8 +289,9 @@
                         ><a href="javascript:void(0);" class="remove-btn"
                           ><i class="fe fe-trash-2"></i
                         ></a>
-                      </td>
+                      </td> -->
                     </tr>
+                    <%})%>
                   </tbody>
                 </table>
               </div>
@@ -424,9 +432,14 @@
                     />
                   </div>-->
                   <div class="form-group float-end mb-0">
-                    <button class="btn btn-primary" type="submit">
+                    <!-- <button class="btn btn-primary" type="submit">
                       Save Invoice
-                    </button>
+                    </button> -->
+                    <div class="form-group float-end mb-0">
+                      <button type="button"
+                          class="btn btn-primary mt-1"
+                          data-bs-toggle="modal"
+                          data-bs-target="#bs-example-modal-lg">Add Lesson</button>
                   </div>
                 </div>
               </div>
@@ -702,3 +715,65 @@
   </div>
 </div> -->
 <!-- /Save Invoices Modal -->
+<div
+class="modal fade"
+id="bs-example-modal-lg"
+tabindex="-1"
+role="dialog"
+aria-labelledby="myLargeModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title" id="myLargeModalLabel">
+        Add Lesson
+      </h4>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form action="" class="form-group" style="padding: 10px;" id="lessonForm">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row" style="padding: 10px;">
+              <label for="">Date</label>
+              <input type="date" class="form-control" id="lessonDate" required>
+            </div>
+            <div class="row" style="padding: 10px;">
+              <label for="">Time</label>
+              <input type="time" class="form-control" id="time" required>
+            </div>
+            <div class="row" style="padding: 10px;">
+              <label for="">Course Code</label>
+              <input type="text" class="form-control" id="courseCode" required>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row" style="padding: 10px;">
+              <label for="">Class</label>
+              <input type="text" class="form-control" id="class" required>
+            </div>
+            <div class="row" style="padding: 10px;">
+              <label for="">Credit Hourse</label>
+              <input type="number" class="form-control" id="creditHours">
+            </div>
+            <!-- <div class="row">
+              <label for="">Course Code</label>
+              <input type="text" class="form-control" id="courseCode">
+            </div> -->
+          </div>
+        </div>
+        <input type="submit" class="btn btn-primary w-100" value="Add lesson">
+        </form>
+    </div>
+  </div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
