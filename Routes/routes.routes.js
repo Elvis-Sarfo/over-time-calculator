@@ -10,35 +10,62 @@ const moment = require('moment')
 const index = "index";
 const index_without_nav = "index-without-nav";
 const index_error = "index-error";
-// ========================================
-const sessionStore = new MysqlStore({
-  host: process.env.HOSTNAME,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
-  clearExpired: true,
-  checkExpirationInterval: 900000,
-  expiration: 86400000
-})
-route.use(session({
-  name: 'overtimeSession',
-  secret: "overtime1234",
-  resave: false,
-  saveUninitialized: false,
-  store: sessionStore
-}))
+// // ========================================
+// const sessionStore = new MysqlStore({
+//   host: process.env.HOSTNAME,
+//   port: process.env.DB_PORT,
+//   user: process.env.DB_USER,
+//   database: process.env.DATABASE,
+//   password: process.env.PASSWORD,
+//   clearExpired: true,
+//   checkExpirationInterval: 900000,
+//   expiration: 86400000
+// })
+// route.use(session({
+//   name: 'overtimeSession',
+//   secret: "overtime1234",
+//   resave: false,
+//   saveUninitialized: false,
+//   store: sessionStore
+// }))
+
+// // Optionally use onReady() to get a promise that resolves when store is ready.
+// sessionStore.onReady().then(() => {
+// 	// MySQL session store ready for use.
+// 	console.log('MySQLStore ready');
+// }).catch(error => {
+// 	// Something went wrong.
+// 	console.error(error);
+// });
 
 // ========================================
 const isAuth = (req, res, next) => {
   try {
-    if (req.session.isAuth) {
-      res.locals.user = req.session.user
-      next()
+    if (req.session.isAuth && (req.session.user.nic != null || req.session.user.nic != undefined)) {
+      const sql = 'SELECT * FROM users WHERE nic=?'
+      db.query(sql, req.session.user.nic, async (err, result) => {
+        if (err) {
+          res.redirect(public_routes.login)
+          return
+        };
+        if (!result[0]) {
+          res.redirect(public_routes.login)
+          return
+        };
+        const user = result[0];
+        req.session.isAuth = true;
+        req.session.authorization = user?.role;
+        req.session.user = user;
+        res.locals.user = user;
+        res.locals.role = user?.role;
+        next();
+      })
     } else {
       res.redirect(public_routes.login)
     }
   } catch (error) {
     console.error(error);
+    res.redirect(public_routes.login)
   }
 }
 
@@ -83,13 +110,23 @@ route.post(public_routes.login, (req, res, next) => {
     if (!email && !password) throw ("Empty Fields")
     const sql = 'SELECT * FROM users WHERE email=?'
     db.query(sql, email, async (err, result) => {
-      if (err) throw (err);
+      if (err) {
+        res.status(401)
+        res.json({ message: "Error Occured", err })
+        return
+      };
+      if (!result[0]) {
+        res.status(401)
+        res.json({ message: "User Dont Exist" });
+        return
+      };
       const user = result[0];
-      const passHash = user?.password
+      const passHash = user?.password;
       const verify = await bcrypt.compare(password, passHash)
       if (verify) {
         req.session.isAuth = true;
         req.session.authorization = user?.role;
+        console.log(user?.role);
         req.session.user = user;
         res.redirect(public_routes.admin_dashboard);
       } else {
@@ -138,14 +175,14 @@ route.get(public_routes.admin_dashboard, isAuth, (req, res, next) => {
 });
 
 route.post(public_routes.register, isAuth, async (req, res, next) => {
-  const { nic, name, designation, department, telephone, email, password, role } = req.body
-  const sql = 'INSERT INTO users (nic,name,designation,department,telephone,email,password,role) VALUES (?,?,?,?,?,?,?,?)';
+  const { nic, name, designation, department, telephone, email, password, role,stuClass } = req.body
+  const sql = 'INSERT INTO users (nic,name,designation,department,telephone,email,password,role,stuClass) VALUES (?,?,?,?,?,?,?,?,?)';
   const hashpass = await bcrypt.hash(password, 12)
-  db.query(sql, [nic, name, designation, department, telephone, email, hashpass, role], (err, result) => {
+  db.query(sql, [nic, name, designation, department, telephone, email, hashpass, role, stuClass], (err, result) => {
     if (err) {
-      res.send(err)
+      res.json(err)
     } else {
-      res.send('created');
+      res.json('created');
     }
   })
 })
@@ -236,7 +273,7 @@ route.post(public_routes.add_claim, isAuth, (req, res, next) => {
 route.get(public_routes.edit_claim, isAuth, (req, res, next) => {
   const claimId = req.params?.id
   const sql = 'SELECT * FROM lesson WHERE claim_id = ?'
-  db.query(sql,claimId, (error, resultSet) => {
+  db.query(sql, claimId, (error, resultSet) => {
     if (error) {
       console.log(error);
     }

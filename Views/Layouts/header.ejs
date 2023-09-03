@@ -193,7 +193,7 @@
           />
           <div class="user-text">
             <h6><%=user.name%></h6>
-            <p class="text-muted mb-0"><%=user.role%></p>
+            <p class="text-muted mb-0"><%=role%></p>
           </div>
         </span>
       </a>
@@ -213,12 +213,12 @@
         </div>
         <a
           class="dropdown-item"
-          href="<%- routes.profile%>"
+          href="/<%- routes.profile%>"
           class="<%= active_path==routes.profile ? 'active' : ''%>"
           >My Profile</a
         >
-        <a class="dropdown-item" href="inbox">Inbox</a>
-        <a class="dropdown-item" href="logout">Logout</a>
+        <a class="dropdown-item" href="/inbox">Inbox</a>
+        <a class="dropdown-item" href="/logout">Logout</a>
       </div>
     </li>
     <!-- /User Menu -->

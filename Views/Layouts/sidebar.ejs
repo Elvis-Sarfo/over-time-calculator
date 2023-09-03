@@ -9,7 +9,8 @@
           class="<%= ( active_path === routes.admin_dashboard || active_path === routes.teacher_dashboard || active_path ===routes.users_dashboard) && 'submenu active' %>">
           <a href="<%- routes.admin_dashboard %>"><i class="feather-grid"></i> <span> Dashboard</span>
         </li>
-        <li
+        <%if(user.role=='admin'){%>
+          <li
           class="<%= ( active_path ===routes.users || active_path == routes.users_grid || active_path === routes.users_details || active_path ===routes.add_users || active_path ===routes.edit_users) && 'submenu active' %>">
           <a href="#"><i class="fas fa-graduation-cap"></i> <span> Users</span>
             <span class="menu-arrow"></span></a>
@@ -24,11 +25,24 @@
             </li>
           </ul>
         </li>
-        <li
+        <%}%>
+       
+        <%if(user.role!='class_rep'){%>
+          <li
           class="<%= active_path==routes.claim || active_path==routes.edit_claim || active_path === routes.add_claim ? 'active' : '' %>">
           <a href="/<%- routes.claims%>">
             <i class="fas fa-clipboard-list"></i> <span>Claims</span></a>
         </li>
+        <%}%>
+
+        <%if(user.role=='class_rep'){%>
+          <li
+          class="<%= active_path==routes.claim || active_path==routes.edit_claim || active_path === routes.add_claim ? 'active' : '' %>">
+          <a href="/<%- routes.claims%>">
+            <i class="fas fa-clipboard-list"></i> <span>Lessons</span></a>
+        </li>
+        <%}%>
+
       </ul>
     </div>
   </div>

@@ -3,10 +3,10 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const route = require("./Routes/routes.routes");
-
 const expressLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const ejs = require("ejs").__express;
+const MysqlStore = require('express-mysql-session')(session)
 
 require('dotenv').config('config.env')
 
@@ -14,6 +14,34 @@ require('dotenv').config('config.env')
 
 // const fs = require("fs");
 // var https = require("https");
+
+// ========================================
+const sessionStore = new MysqlStore({
+  host: process.env.HOSTNAME,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  clearExpired: true,
+  checkExpirationInterval: 900000,
+  expiration: 86400000
+})
+app.use(session({
+  name: 'overtimeSession',
+  secret: "overtime1234",
+  resave: false,
+  saveUninitialized: false,
+  store: sessionStore
+}))
+
+// Optionally use onReady() to get a promise that resolves when store is ready.
+sessionStore.onReady().then(() => {
+	// MySQL session store ready for use.
+	console.log('MySQLStore ready');
+}).catch(error => {
+	// Something went wrong.
+	console.error(error);
+});
 
 const port = process.env.PORT || 3002;
 

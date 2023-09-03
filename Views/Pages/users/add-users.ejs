@@ -28,7 +28,7 @@
               </div>
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
-                  <label>NIC <span class="login-danger">*</span></label>
+                  <label>Staff ID/Index Number <span class="login-danger">*</span></label>
                   <input
                     class="form-control"
                     type="text"
@@ -137,12 +137,25 @@
               <div class="col-12 col-sm-4">
                 <div class="form-group local-forms">
                   <label>Role <span class="login-danger">*</span></label>
-                  <select class="form-control select" id="select_role" required>
+                  <select class="form-control select" id="select_role" onchange="change()" required>
                     <option>Please Select role</option>
-                    <option>admin</option>
-                    <option>class rep</option>
-                    <option>lecturer</option>
-                    <option>registrer</option>
+                    <option value="admin">Admin</option>
+                    <option value="class_rep">Class rep</option>
+                    <option value="lecturer">Lecturer</option>
+                    <option value="registrer">Registrer</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-4" id="class" style="display: none;">
+                <div class="form-group local-forms">
+                  <label>Class <span class="login-danger">*</span></label>
+                  <select class="form-control select" id="select_class">
+                    <option>Please Select Class</option>
+                    <option value="ITE A">ITE A</option>
+                    <option value="ITE B">ITE B</option>
+                    <option value="ITE C">ITE C</option>
+                    <option value="ITE D">ITE D</option>
                   </select>
                 </div>
               </div>
@@ -211,6 +224,7 @@
       const email=document.getElementById('email').value
       const password=document.getElementById('password').value
       const role=document.getElementById('select_role').value
+      const stuClass=document.getElementById('select_class').value
       // formData.append('nic',nic)
       // formData.append('name',name)
       // formData.append('department',department)
@@ -226,9 +240,10 @@
         'telephone':phone,
         'email':email,
         'password':password,
-        'role':role
+        'role':role,
+        'stuClass':stuClass
       }
-      console.log('hello',nic,name,department,phone,email,password,role);
+      console.log('hello',nic,name,department,phone,email,password,role,stuClass);
 
       fetch('/register',{
         method:"POST",
@@ -253,4 +268,15 @@
       // location.reload()
 
     })
+    
+    function change(){
+      const getclass=document.getElementById('class')
+      const getrole=document.getElementById('select_role').value
+      console.log(getrole);
+      if(getrole==='class_rep'){
+        getclass.style.display='block'
+      }else{
+        getclass.style.display='none'
+      }
+    }
 </script>
