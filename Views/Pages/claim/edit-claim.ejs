@@ -8,7 +8,8 @@
         <div class="card-body">
           <form action="#" class="invoices-form">
             <div class="invoices-main-form">
-
+              <h3> <strong class="customer-text">Claim #</strong><span id="claimID"><%=claimId %></span></h3>
+              <p hidden id="lecturerID"> <%= user.nic%> </p>
             </div>
             <div class="invoice-item">
               <div class="row">
@@ -17,8 +18,8 @@
                     <strong class="customer-text">Lecturer Details</strong>
                     <p class="invoice-details invoice-details-two">
                       <%=user.name%> <br />
-                        <%=user.email%><br />
-                          <%=user.department%><br />
+                      <%=user.email%><br />
+                      <%=user.department%><br />
                     </p>
                   </div>
                 </div>
@@ -43,21 +44,22 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <%lessons.forEach(lesson=>{%>
                     <tr class="add-row">
                       <td>
-                        <%=user.date%>
+                        <%=moment(lesson.date).format("LL")%>
                       </td>
                       <td>
-                        <%=user.time%>
+                        <%=lesson.time%>
                       </td>
                       <td>
-                        <%=user.course_code%>
+                        <%=lesson.course_code%>
                       </td>
                       <td>
-                        <%=user.credit_hours%>
+                        <%=lesson.credit_hours%>
                       </td>
                       <td>
-                        <%=user.approved_by%>
+                        <%=lesson.approved_by%>
                       </td>
                       <!-- <td>
                         <input type="date" class="form-control" />
@@ -90,6 +92,7 @@
                         ></a>
                       </td> -->
                     </tr>
+                    <%})%>
                   </tbody>
                 </table>
               </div>
@@ -150,6 +153,7 @@
       <div class="modal-body">
         <form action="" class="form-group" style="padding: 10px;" id="lessonForm">
           <div class="row">
+            <input hidden type="text" value="<%= claimId %>" id="claimID" required>
             <div class="col-md-6">
               <div class="row" style="padding: 10px;">
                 <label for="">Date</label>

@@ -235,10 +235,21 @@ route.post(public_routes.add_claim, isAuth, (req, res, next) => {
 
 route.get(public_routes.edit_claim, isAuth, (req, res, next) => {
   const claimId = req.params?.id
-  res.render(index, {
-    title: "Claim",
-    page_path: "claim/edit-claim",
-    user: req.session.user,
+  const sql = 'SELECT * FROM lesson WHERE claim_id = ?'
+  db.query(sql,claimId, (error, resultSet) => {
+    if (error) {
+      console.log(error);
+    }
+    else {
+      res.render(index, {
+        title: "Claim",
+        page_path: "claim/edit-claim",
+        user: req.session.user,
+        claimId: claimId,
+        lessons: resultSet,
+        moment: moment
+      });
+    }
   });
 });
 
@@ -279,12 +290,6 @@ route.post(public_routes.lesson, (req, res, next) => {
     if (error) {
       console.error(error)
     } else {
-      const claimId = req.params?.id
-      res.render(index, {
-        title: "Claim",
-        page_path: "claim/edit-claim",
-        user: req.session.user,
-      });
       res.json('lesson added ')
     }
   })

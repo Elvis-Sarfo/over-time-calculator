@@ -124,3 +124,53 @@
 <!-- Custom JS -->
 <script src="/assets/js/script.js"></script>
 <script src="/assets/js/jquery-ui.min.js"></script>
+
+<!-- SCRIPT -->
+<script>
+  document.getElementById('lessonForm').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const lessonDate = document.getElementById('lessonDate').value
+    const time = document.getElementById('time').value
+    const courseCode = document.getElementById('courseCode').value
+    const className = document.getElementById('class').value
+    const creditHours = document.getElementById('creditHours').value
+    const claimID = document.getElementById('claimID').innerHTML
+    const lecturerID = document.getElementById('lecturerID').innerHTML
+    const lessonObj = {
+      'date': lessonDate,
+      'time': time,
+      'course_code': courseCode,
+      'credit_hours': creditHours,
+      'lecturer_id': lecturerID,
+      'claim_id': claimID
+    }
+    console.log(lessonDate, time, courseCode, creditHours, lecturerID, claimID);
+    fetch('/lesson', {
+      method: "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(lessonObj)
+    })
+      .then(result => { result.json() })
+      .then(lessonresult => {
+        Swal.fire({
+          title: "Lesson Added Succesfully 😀",
+          confirmButtonClass: "btn btn-primary",
+          buttonsStyling: !1,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            window.location = "/edit-claim/"+claimID
+          } 
+        });
+        // location.reload()
+      }).catch(error => {
+        Swal.fire({
+          title: "problem Adding lesson 😪",
+          confirmButtonClass: "btn btn-primary",
+          buttonsStyling: !1,
+        });
+      })
+  })
+</script>
