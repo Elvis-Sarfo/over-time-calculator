@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include ('./head') %>
+<%- include ('./head') %>
 
   <body>
-    index
     <!-- Main Wrapper -->
     <div class="main-wrapper">
       <!-- Header -->
       <%- include ('./header') %>
-      <!-- /Header -->
+        <!-- /Header -->
 
-      <!-- Sidebar -->
-      <%- include ('./sidebar') %>
-      <!-- /Sidebar -->
+        <!-- Sidebar -->
+        <%- include ('./sidebar') %>
+          <!-- /Sidebar -->
 
-      <!-- Page Wrapper -->
-      <div class="page-wrapper">
-          <%- include('../Pages/'+page_path) %>
-          <%- include ('./footer') %>
-      </div>
-      <!-- /Page Wrapper -->
+          <!-- Page Wrapper -->
+          <div class="page-wrapper">
+            <%- include('../Pages/' + page_path) %>
+            <%- include('./footer') %>
+          </div>
+          <!-- /Page Wrapper -->
     </div>
     <!-- /Main Wrapper -->
 
     <%- include ('./script') %>
   </body>
+
 </html>

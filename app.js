@@ -10,20 +10,19 @@ const ejs = require("ejs").__express;
 
 require('dotenv').config('config.env')
 
-const readDocFile = require("./utils/readDocFiles")
+// const readDocFile = require("./utils/readDocFiles")
 
-const fs = require("fs");
-var https = require("https");
+// const fs = require("fs");
+// var https = require("https");
 
 const port = process.env.PORT || 3002;
 
 require("dotenv").config();
-app.use(express.static(__dirname + "/public"));
-
+app.use(express.static(path.join(__dirname + "/public")));
 app.set("views", path.join(__dirname, "Views/Layouts"));
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(
   session({ resave: false, saveUninitialized: true, secret: "nodedemo" })
 );

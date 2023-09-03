@@ -236,7 +236,7 @@ route.post(public_routes.add_claim, isAuth, (req, res, next) => {
 route.get(public_routes.edit_claim, isAuth, (req, res, next) => {
   const claimId = req.params?.id
   res.render(index, {
-    title: "claim",
+    title: "Claim",
     page_path: "claim/edit-claim",
     user: req.session.user,
   });

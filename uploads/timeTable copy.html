@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+
+  <title>Preskool - claim</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/img/favicon.png" />
+
+  <!-- Fontfamily -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css" />
+
+  <!-- Feathericon CSS -->
+  <link rel="stylesheet" href="assets/plugins/feather/feather.css" />
+  <link rel="stylesheet" href="assets/css/feather.css">
+
+  <!-- Pe7 CSS -->
+  <link rel="stylesheet" href="assets/plugins/icons/flags/flags.css" />
+  <link rel="stylesheet" href="assets/plugins/icons/pe7/pe-icon-7.css">
+  <link rel="stylesheet" href="assets/plugins/icons/themify/themify.css">
+  <link rel="stylesheet" href="assets/plugins/icons/weather/weathericons.css">
+  <link rel="stylesheet" href="assets/plugins/icons/typicons/typicons.css">
+
+  <!-- Datepicker CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
+
+  <!-- Fontawesome CSS -->
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css" />
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css" />
+
+  <!-- Ckeditor CSS-->
+  <link rel="stylesheet" href="assets/css/ckeditor.css">
+
+  <!-- Datatables CSS -->
+  <link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
+
+  <!-- Calendar CSS -->
+  <link rel="stylesheet" href="assets/plugins/simple-calendar/simple-calendar.css">
+
+  <!-- Full Calander CSS -->
+  <link rel="stylesheet" href="assets/plugins/fullcalendar/fullcalendar.min.css">
+
+  <!-- Dragula CSS -->
+  <link rel="stylesheet" href="assets/plugins/dragula/css/dragula.min.css">
+
+  <!-- Summernote CSS -->
+  <link rel="stylesheet" href="assets/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="assets/plugins/summernote/summernote-lite.min.css">
+
+  <!-- Sticky CSS -->
+  <link rel="stylesheet" href="assets/plugins/stickynote/sticky.css">
+
+  <!-- Select CSS -->
+  <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+
+  <!-- Wizard CSS -->
+  <link rel="stylesheet" href="assets/plugins/twitter-bootstrap-wizard/form-wizard.css">
+
+  <!-- Ionic CSS -->
+  <link rel="stylesheet" href="assets/plugins/icons/ionic/ionicons.css">
+
+  <!-- Material CSS -->
+  <link rel="stylesheet" href="assets/plugins/material/materialdesignicons.css">
+  <link rel="stylesheet" href="assets/plugins/simpleline/simple-line-icons.css">
+
+  <!-- Lightbox CSS -->
+  <link rel="stylesheet" href="assets/plugins/lightbox/glightbox.min.css">
+
+  <!-- Rangeslider CSS -->
+  <link rel="stylesheet" href="assets/plugins/ion-rangeslider/css/ion.rangeSlider.min.css">
+
+  <!-- scroll CSS -->
+  <link rel="stylesheet" href="assets/plugins/scrollbar/scroll.min.css">
+
+  <!-- Toatr CSS -->
+  <link rel="stylesheet" href="assets/plugins//toastr/toatr.css">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/plugins/c3-chart/c3.min.css">
+  <link rel="stylesheet" href="assets/plugins/alertify/alertify.min.css">
+</head>
+
+
+<body>
+  <!-- Main Wrapper -->
+  <div class="main-wrapper">
+    <!-- Header -->
+
+    <div class="header">
+      <!-- Logo -->
+      <div class="header-left">
+        <a href="index" class="logo">
+          <img src="assets/img/logo.png" alt="Logo" />
+        </a>
+        <a href="index" class="logo logo-small">
+          <img src="assets/img/small logo.png" alt="Logo" width="30" height="30" />
+        </a>
+      </div>
+      <!-- /Logo -->
+
+      <div class="menu-toggle">
+        <a href="javascript:void(0);" id="toggle_btn">
+          <i class="fas fa-bars"></i>
+        </a>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="top-nav-search">
+        <form>
+          <input type="text" class="form-control" placeholder="Search here" />
+          <button class="btn" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+      <!-- /Search Bar -->
+
+      <!-- Mobile Menu Toggle -->
+      <a class="mobile_btn" id="mobile_btn">
+        <i class="fas fa-bars"></i>
+      </a>
+      <!-- /Mobile Menu Toggle -->
+
+      <!-- Header Right Menu -->
+      <ul class="nav user-menu">
+        <li class="nav-item dropdown noti-dropdown language-drop me-2">
+          <a href="#" class="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
+            <img src="assets/img/icons/header-icon-01.svg" alt="" />
+          </a>
+          <div class="dropdown-menu">
+            <div class="noti-content">
+              <div>
+                <a class="dropdown-item" href="javascript:;"><i class="flag flag-lr me-2"></i>English</a>
+                <a class="dropdown-item" href="javascript:;"><i class="flag flag-bl me-2"></i>Francais</a>
+                <a class="dropdown-item" href="javascript:;"><i class="flag flag-cn me-2"></i>Turkce</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- Notifications -->
+        <li class="nav-item dropdown noti-dropdown me-2">
+          <a href="#" class="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
+            <img src="assets/img/icons/header-icon-05.svg" alt="" />
+          </a>
+          <div class="dropdown-menu notifications">
+            <div class="topnav-dropdown-header">
+              <span class="notification-title">Notifications</span>
+              <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+            </div>
+            <div class="noti-content">
+              <ul class="notification-list">
+                <li class="notification-message">
+                  <a href="#">
+                    <div class="media d-flex">
+                      <span class="avatar avatar-sm flex-shrink-0">
+                        <img class="avatar-img rounded-circle" alt="User Image"
+                          src="assets/img/profiles/avatar-02.jpg" />
+                      </span>
+                      <div class="media-body flex-grow-1">
+                        <p class="noti-details">
+                          <span class="noti-title">Carlson Tech</span> has approved
+                          <span class="noti-title">your estimate</span>
+                        </p>
+                        <p class="noti-time">
+                          <span class="notification-time">4 mins ago</span>
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="notification-message">
+                  <a href="#">
+                    <div class="media d-flex">
+                      <span class="avatar avatar-sm flex-shrink-0">
+                        <img class="avatar-img rounded-circle" alt="User Image"
+                          src="assets/img/profiles/avatar-11.jpg" />
+                      </span>
+                      <div class="media-body flex-grow-1">
+                        <p class="noti-details">
+                          <span class="noti-title">International Software Inc</span>
+                          has sent you a invoice in the amount of
+                          <span class="noti-title">$218</span>
+                        </p>
+                        <p class="noti-time">
+                          <span class="notification-time">6 mins ago</span>
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="notification-message">
+                  <a href="#">
+                    <div class="media d-flex">
+                      <span class="avatar avatar-sm flex-shrink-0">
+                        <img class="avatar-img rounded-circle" alt="User Image"
+                          src="assets/img/profiles/avatar-17.jpg" />
+                      </span>
+                      <div class="media-body flex-grow-1">
+                        <p class="noti-details">
+                          <span class="noti-title">John Hendry</span> sent a
+                          cancellation request
+                          <span class="noti-title">Apple iPhone XR</span>
+                        </p>
+                        <p class="noti-time">
+                          <span class="notification-time">8 mins ago</span>
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="notification-message">
+                  <a href="#">
+                    <div class="media d-flex">
+                      <span class="avatar avatar-sm flex-shrink-0">
+                        <img class="avatar-img rounded-circle" alt="User Image"
+                          src="assets/img/profiles/avatar-13.jpg" />
+                      </span>
+                      <div class="media-body flex-grow-1">
+                        <p class="noti-details">
+                          <span class="noti-title">Mercury Software Inc</span>
+                          added a new product
+                          <span class="noti-title">Apple MacBook Pro</span>
+                        </p>
+                        <p class="noti-time">
+                          <span class="notification-time">12 mins ago</span>
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="topnav-dropdown-footer">
+              <a href="#">View all Notifications</a>
+            </div>
+          </div>
+        </li>
+        <!-- /Notifications -->
+        <li class="nav-item zoom-screen me-2">
+          <a href="#" class="nav-link header-nav-list win-maximize">
+            <img src="assets/img/icons/header-icon-04.svg" alt="" />
+          </a>
+        </li>
+
+        <!-- User Menu -->
+        <li class="nav-item dropdown has-arrow new-user-menus">
+          <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+            <span class="user-img">
+              <img class="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor" />
+              <div class="user-text">
+                <h6>Andoh Jeffery</h6>
+                <p class="text-muted mb-0">admin</p>
+              </div>
+            </span>
+          </a>
+          <div class="dropdown-menu">
+            <div class="user-header">
+              <div class="avatar avatar-sm">
+                <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle" />
+              </div>
+              <div class="user-text">
+                <h6>Ryan Taylor</h6>
+                <p class="text-muted mb-0">Administrator</p>
+              </div>
+            </div>
+            <a class="dropdown-item" href="profile" class="">My Profile</a>
+            <a class="dropdown-item" href="inbox">Inbox</a>
+            <a class="dropdown-item" href="logout">Logout</a>
+          </div>
+        </li>
+        <!-- /User Menu -->
+      </ul>
+      <!-- /Header Right Menu -->
+    </div>
+
+    <!-- /Header -->
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+          <ul>
+            <li class="menu-title">
+              <span>Main Menu</span>
+            </li>
+            <li class="false">
+              <a href="index"><i class="feather-grid"></i> <span> Dashboard</span>
+            </li>
+            <li class="false">
+              <a href="#"><i class="fas fa-graduation-cap"></i> <span> Users</span>
+                <span class="menu-arrow"></span></a>
+              <ul>
+                <li>
+                  <a href="users" class="">Users
+                    List</a>
+                </li>
+                <li><a href="add-users" class="">Add
+                    User</a>
+                </li>
+              </ul>
+            </li>
+            <li class="">
+              <a href="claims">
+                <i class="fas fa-clipboard-list"></i> <span>Claims</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /Sidebar -->
+
+    <!-- Page Wrapper -->
+    <div class="page-wrapper">
+      <!-- Feather CSS -->
+      <!-- <link rel="stylesheet" href="assets/plugins/icons/feather/feather.css" /> -->
+
+      <div class="content container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card invoices-add-card">
+              <div class="card-body">
+                <form action="#" class="invoices-form">
+                  <div class="invoices-main-form">
+
+                  </div>
+                  <div class="invoice-item">
+                    <div class="row">
+                      <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="invoice-info">
+                          <strong class="customer-text">Lecturer Details</strong>
+                          <p class="invoice-details invoice-details-two">
+                            Andoh Jeffery <br />
+                            admin@email.com<br />
+                            Administration<br />
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="invoice-add-table">
+                    <h4>Lesson Details</h4>
+                    <div class="table-responsive">
+                      <!-- <table class="table table-center add-table-items"> -->
+                      <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                        <thead>
+                          <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Course Code</th>
+                            <!-- <th>Lecture</th> -->
+                            <th>Credit Hours</th>
+                            <th>Approved By</th>
+                            <!-- <th>Status</th> -->
+                            <!-- <th>Actions</th> -->
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="add-row">
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <!-- <td>
+                        <input type="date" class="form-control" />
+                      </td>
+                      <td>
+                        <input type="time" class="form-control" />
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" />
+                      </td>
+                       <td>
+                        <input type="text" class="form-control" />
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" />
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" />
+                      </td>
+                      <td>
+                      </td>
+                      <td class="add-remove text-end">
+                        <a href="javascript:void(0);" class="add-btn me-2"
+                          ><i class="fas fa-plus-circle"></i
+                        ></a>
+                        <a href="#" class="copy-btn me-2"
+                          ><i class="fe fe-copy"></i></a
+                        ><a href="javascript:void(0);" class="remove-btn"
+                          ><i class="fe fe-trash-2"></i
+                        ></a>
+                      </td> -->
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="form-group float-end mb-0">
+                    <!-- <button class="btn btn-primary" type="submit">
+                      Save Invoice
+                    </button> -->
+                    <div class="form-group float-end mb-0">
+                      <button type="button" class="btn btn-primary mt-1" data-bs-toggle="modal"
+                        data-bs-target="#bs-example-modal-lg">Add Lesson</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete Invoices Modal -->
+      <div class="modal custom-modal fade" id="delete_invoices_details" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="form-header">
+                <h3>Delete Invoice Details</h3>
+                <p>Are you sure want to delete?</p>
+              </div>
+              <div class="modal-btn delete-action">
+                <div class="row">
+                  <div class="col-6">
+                    <a href="javascript:void(0);" data-bs-dismiss="modal"
+                      class="btn btn-primary paid-continue-btn">Delete</a>
+                  </div>
+                  <div class="col-6">
+                    <a href="javascript:void(0);" data-bs-dismiss="modal"
+                      class="btn btn-primary paid-cancel-btn">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Delete Invoices Modal -->
+
+      <!-- /Save Invoices Modal -->
+      <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myLargeModalLabel">
+                Add Lesson
+              </h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="" class="form-group" style="padding: 10px;" id="lessonForm">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row" style="padding: 10px;">
+                      <label for="">Date</label>
+                      <input type="date" class="form-control" id="lessonDate" required>
+                    </div>
+                    <div class="row" style="padding: 10px;">
+                      <label for="">Time</label>
+                      <input type="time" class="form-control" id="time" required>
+                    </div>
+                    <div class="row" style="padding: 10px;">
+                      <label for="">Course Code</label>
+                      <input type="text" class="form-control" id="courseCode" required>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="row" style="padding: 10px;">
+                      <label for="">Class</label>
+                      <input type="text" class="form-control" id="class" required>
+                    </div>
+                    <div class="row" style="padding: 10px;">
+                      <label for="">Credit Hourse</label>
+                      <input type="number" class="form-control" id="creditHours">
+                    </div>
+                    <!-- <div class="row">
+              <label for="">Course Code</label>
+              <input type="text" class="form-control" id="courseCode">
+            </div> -->
+                  </div>
+                </div>
+                <input type="submit" class="btn btn-primary w-100" value="Add lesson">
+              </form>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- Footer -->
+      <footer>
+        <p>Copyright © 2023.</p>
+      </footer>
+      <!-- /Footer -->
+
+    </div>
+    <!-- /Page Wrapper -->
+  </div>
+  <!-- /Main Wrapper -->
+
+  <!-- jQuery -->
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+  <!-- Bootstrap Core JS -->
+  <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Feather Icon JS -->
+  <script src="assets/js/feather.min.js"></script>
+
+  <!-- Slimscroll JS -->
+  <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Select2 JS -->
+  <script src="assets/plugins/select2/js/select2.min.js"></script>
+
+  <!-- Datatables JS -->
+  <script src="assets/plugins/datatables/datatables.min.js"></script>
+
+  <!-- Datepicker Core JS -->
+  <script src="assets/plugins/moment/moment.min.js"></script>
+  <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+  <!-- Daterangepicker JS -->
+  <script src="assets/js/moment.min.js"></script>
+  <script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+  <!-- Chart JS -->
+  <script src="assets/plugins/chartjs/chart.min.js"></script>
+  <script src="assets/plugins/chartjs/chart-data.js"></script>
+  <script src="assets/plugins/peity/jquery.peity.min.js"></script>
+  <script src="assets/plugins/peity/chart-data.js"></script>
+  <script src="assets/plugins/c3-chart/d3.v5.min.js"></script>
+  <script src="assets/plugins/c3-chart/c3.min.js"></script>
+  <script src="assets/plugins/c3-chart/chart-data.js"></script>
+  <script src="assets/plugins/morris/raphael-min.js"></script>
+  <script src="assets/plugins/morris/morris.min.js"></script>
+  <script src="assets/plugins/morris/chart-data.js"></script>
+  <script src="assets/plugins/flot/jquery.flot.js"></script>
+  <script src="assets/plugins/flot/jquery.flot.fillbetween.js"></script>
+  <script src="assets/plugins/flot/jquery.flot.pie.js"></script>
+  <script src="assets/plugins/flot/chart-data.js"></script>
+
+  <!-- Apexchart JS -->
+  <script src="assets/plugins/apexchart/apexcharts.min.js"></script>
+  <script src="assets/plugins/apexchart/chart-data.js"></script>
+
+  <!-- Calendar Js -->
+  <script src="assets/plugins/simple-calendar/jquery.simple-calendar.js"></script>
+  <script src="assets/js/calander.js"></script>
+
+  <!-- Full Calendar JS -->
+  <script src="assets/js/jquery-ui.min.js"></script>
+  <script src="assets/plugins/fullcalendar/fullcalendar.min.js"></script>
+  <script src="assets/plugins/fullcalendar/jquery.fullcalendar.js"></script>
+
+  <!-- Dragula JS -->
+  <script src="assets/plugins/dragula/js/dragula.min.js"></script>
+  <script src="assets/plugins/dragula/js/drag-drop.min.js"></script>
+
+  <!-- Raty JS -->
+  <script src="assets/plugins/raty/jquery.raty.js"></script>
+  <script src="assets/plugins/raty/custom.raty.js"></script>
+
+  <!-- Circle Progress JS -->
+  <script src="assets/js/circle-progress.min.js"></script>
+
+  <!-- ckeditor JS -->
+  <script src="assets/js/ckeditor.js"></script>
+
+  <!-- Form Validation JS -->
+  <script src="assets/js/form-validation.js"></script>
+
+  <!-- Summernote JS -->
+  <script src="assets/plugins/summernote/summernote-bs4.min.js"></script>
+  <script src="assets/plugins/summernote/summernote-lite.min.js"></script>
+
+  <!-- Stickynote JS -->
+  <script src="assets/js/jquery-ui.min.js"></script>
+  <script src="assets/plugins/stickynote/sticky.js"></script>
+  <script src="assets/plugins/countup/jquery.counterup.min.js"></script>
+  <script src="assets/plugins/countup/jquery.waypoints.min.js"></script>
+  <script src="assets/plugins/countup/jquery.missofis-countdown.js"></script>
+
+  <!-- Alertify JS -->
+  <script src="assets/plugins/alertify/alertify.min.js"></script>
+  <script src="assets/plugins/alertify/custom-alertify.min.js"></script>
+
+  <!-- Wizard JS -->
+  <script src="assets/plugins/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+  <script src="assets/plugins/twitter-bootstrap-wizard/prettify.js"></script>
+  <script src="assets/plugins/twitter-bootstrap-wizard/form-wizard.js"></script>
+
+  <!-- Clipboard JS -->
+  <script src="assets/plugins/clipboard/clipboard.min.js"></script>
+
+  <!-- Mask JS -->
+  <script src="assets/js/jquery.maskedinput.min.js"></script>
+  <script src="assets/js/mask.js"></script>
+  <script src="assets/plugins/toastr/toastr.min.js"></script>
+  <script src="assets/plugins/toastr/toastr.js"></script>
+
+  <!-- Timeline JS -->
+  <script src="assets/plugins/timeline/horizontal-timeline.js"></script>
+
+  <!-- lightbox JS -->
+  <script src="assets/plugins/lightbox/glightbox.min.js"></script>
+  <script src="assets/plugins/lightbox/lightbox.js"></script>
+
+  <!-- Rangeslider JS -->
+  <script src="assets/plugins/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+  <script src="assets/plugins/ion-rangeslider/js/custom-rangeslider.js"></script>
+
+  <!-- Plyr JS -->
+  <script src="assets/plugins/scrollbar/scrollbar.min.js"></script>
+  <script src="assets/plugins/scrollbar/custom-scroll.js"></script>
+
+  <!-- Bootstrap Tagsinput JS -->
+  <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+
+  <!-- Sweetalert 2 -->
+  <script src="assets/plugins/sweetalert/sweetalert2.all.min.js"></script>
+  <script src="assets/plugins/sweetalert/sweetalerts.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/jquery-ui.min.js"></script>
+</body>
+
+</html>
