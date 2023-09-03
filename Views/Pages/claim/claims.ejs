@@ -1,0 +1,132 @@
+<div class="content container-fluid">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col">
+        <h3 class="page-title">Claims</h3>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index">Dashboard</a></li>
+          <li class="breadcrumb-item active">Claim</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Header -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card card-table">
+        <div class="card-body">
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="page-title">Claim</h3>
+              </div>
+              <div class="col-auto text-end float-end ms-auto download-grp">
+                <a href="add-claim" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- /Page Header -->
+          <div class="table-responsive">
+            <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+              <thead class="student-thread">
+                <tr>
+                  <th>claim ID</th>
+                  <th>Lecturer ID</th>
+                  <th>Designation</th>
+                  <th>Status</th>
+                  <th class="text-end">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%claims.forEach(claim=>{%>
+                  <tr>
+                    <td id="claimID">
+                      <%=claim.id%>
+                    </td>
+                    <td id="lecturerID">
+                      <%=claim.nic%>
+                    </td>
+                    <td>
+                      <%=claim.designation%>
+                    </td>
+                    <td><span class="badge bg-info">
+                        <%=claim.approval_status%>
+                      </span></td>
+                    <td class="text-end">
+                      <div class="actions">
+                        <!-- <a
+                        href="javascript:;"
+                        class="btn btn-sm bg-success-light me-2"
+                      >
+                        <i class="feather-eye"></i>
+                      </a> -->
+                        <a href="edit-claim/<%=claim.id%>" class="btn btn-sm bg-danger-light">
+                          <i class="feather-plus"></i>
+                        </a>
+                        <!-- <button type="button"
+                        class="btn btn-info mt-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#bs-example-modal-lg"><i class="feather-plus"></i></button> -->
+                      </div>
+                    </td>
+                  </tr>
+                  <%})%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+
+
+<!-- SCRIPT -->
+<script>
+  document.getElementById('lessonForm').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const lessonDate = document.getElementById('lessonDate').value
+    const time = document.getElementById('time').value
+    const courseCode = document.getElementById('courseCode').value
+    const className = document.getElementById('class').value
+    const creditHours = document.getElementById('creditHours').value
+    const claimID = document.getElementById('claimID').innerHTML
+    const lecturerID = document.getElementById('lecturerID').innerHTML
+    const lessonObj = {
+      'date': lessonDate,
+      'time': time,
+      'course_code': courseCode,
+      'credit_hours': creditHours,
+      'lecturer_id': lecturerID,
+      'claim_id': claimID
+    }
+    console.log(lessonDate, time, courseCode, creditHours, lecturerID, claimID);
+    fetch('/lesson', {
+      method: "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(lessonObj)
+    })
+      .then(result => { result.json() })
+      .then(lessonresult => {
+        Swal.fire({
+          title: "Lesson Added Succesfully 😀",
+          confirmButtonClass: "btn btn-primary",
+          buttonsStyling: !1,
+        });
+        // location.reload()
+      }).catch(error => {
+        Swal.fire({
+          title: "problem Adding lesson 😪",
+          confirmButtonClass: "btn btn-primary",
+          buttonsStyling: !1,
+        });
+      })
+  })
+</script>

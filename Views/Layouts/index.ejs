@@ -7,41 +7,17 @@
     <!-- Main Wrapper -->
     <div class="main-wrapper">
       <!-- Header -->
-      <%- include ('./header',{user:user}) %>
+      <%- include ('./header') %>
       <!-- /Header -->
 
       <!-- Sidebar -->
-      <%- include ('./sidebar',{user:user}) %>
+      <%- include ('./sidebar') %>
       <!-- /Sidebar -->
 
       <!-- Page Wrapper -->
       <div class="page-wrapper">
-        <%- include('../Pages/'+page_path) %>
-
-        <% if(active_path === routes.add_student      || active_path === routes.edit_student       || active_path === routes.invoices
-        || active_path === routes.add_teacher         || active_path === routes.edit_teacher       || active_path === routes.add_department
-        || active_path === routes.edit_department     || active_path === routes.add_subject        || active_path === routes.edit_subject 
-        || active_path === routes.invoices_paid       || active_path === routes.invoices_overdue   || active_path === routes.invoices_draft 
-        || active_path === routes.invoices_recurring  || active_path === routes.invoices_cancelled || active_path === routes.invoice_grid
-        || active_path === routes.add_invoice         || active_path === routes.edit_invoice       || active_path === routes.view_invoice 
-        || active_path === routes.invoices_settings   || active_path === routes.tax_settings       || active_path === routes.bank_settings 
-        || active_path === routes.add_fees_collection || active_path === routes.add_expenses       || active_path === routes.add_salary 
-        || active_path === routes.lesson                || active_path === routes.pending_blog       || active_path === routes.add_blog 
-        || active_path === routes.edit_blog           || active_path === routes.settings           || active_path === routes.localization_details 
-        || active_path === routes.payment_settings    || active_path === routes.email_settings     || active_path === routes.social_settings 
-        || active_path === routes.social_links        || active_path === routes.seo_settings       || active_path === routes.others_settings 
-        || active_path === routes.blank_page          || active_path === routes.profile            || active_path === routes.edit_books  
-        || active_path === routes.add_holiday         || active_path === routes.add_fees           || active_path === routes.edit_fees
-        || active_path === routes.edit_exam           || active_path === routes.add_exam           || active_path === routes.add_events 
-        || active_path === routes.add_time_table      || active_path === routes.edit_time_table    || active_path === routes.add_books 
-        || active_path === routes.edit_sports         || active_path === routes.add_sports         || active_path === routes.add_room 
-        || active_path === routes.edit_room           || active_path === routes.edit_transport     || active_path === routes.add_transport
-        || active_path === routes.blog_categories     || active_path === routes.blog_details       || active_path === routes.edit_events) { %>
-          <% } else { %>
-        <!-- Footer -->
-        <%- include ('./footer') %>
-        <!-- /Footer -->
-          <% } %>
+          <%- include('../Pages/'+page_path) %>
+          <%- include ('./footer') %>
       </div>
       <!-- /Page Wrapper -->
     </div>

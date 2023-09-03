@@ -36,7 +36,7 @@ app.use(expressLayouts);
 app.use("/", route);
 
 
- readDocFile();
+//  readDocFile();
 
 // --------- ( For deployment use ) ------------
 
