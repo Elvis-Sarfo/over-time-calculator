@@ -15,18 +15,18 @@
             <span class="menu-arrow"></span></a>
           <ul>
             <li>
-              <a href="<%- routes.users%>"
+              <a href="/<%- routes.users%>"
                 class="<%= active_path==routes.users || active_path == routes.users_grid ? 'active' : '' %>">Users
                 List</a>
             </li>
-            <li><a href="<%- routes.add_users%>" class="<%= active_path==routes.add_users ? 'active' : '' %>">Add
+            <li><a href="/<%- routes.add_users%>" class="<%= active_path==routes.add_users ? 'active' : '' %>">Add
                 User</a>
             </li>
           </ul>
         </li>
         <li
           class="<%= active_path==routes.claim || active_path==routes.edit_claim || active_path === routes.add_claim ? 'active' : '' %>">
-          <a href="<%- routes.claims%>">
+          <a href="/<%- routes.claims%>">
             <i class="fas fa-clipboard-list"></i> <span>Claims</span></a>
         </li>
       </ul>

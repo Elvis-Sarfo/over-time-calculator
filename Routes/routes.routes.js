@@ -279,11 +279,12 @@ route.post(public_routes.lesson, (req, res, next) => {
     if (error) {
       console.error(error)
     } else {
-      // res.render(index,{
-      //   title:'Lessons',
-      //   page_path:'lesson/add-lesson',
-      //   user:result
-      // });
+      const claimId = req.params?.id
+      res.render(index, {
+        title: "Claim",
+        page_path: "claim/edit-claim",
+        user: req.session.user,
+      });
       res.json('lesson added ')
     }
   })
