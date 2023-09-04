@@ -8,8 +8,12 @@
         <div class="card-body">
           <form action="#" class="invoices-form">
             <div class="invoices-main-form">
-              <h3> <strong class="customer-text">Claim #</strong><span id="claimID"><%=claimId %></span></h3>
-              <p hidden id="lecturerID"> <%= user.nic%> </p>
+              <h3> <strong class="customer-text">Claim #</strong><span id="claimID">
+                  <%=claimId %>
+                </span></h3>
+              <p hidden id="lecturerID">
+                <%= user.id%>
+              </p>
             </div>
             <div class="invoice-item">
               <div class="row">
@@ -18,8 +22,8 @@
                     <strong class="customer-text">Lecturer Details</strong>
                     <p class="invoice-details invoice-details-two">
                       <%=user.name%> <br />
-                      <%=user.email%><br />
-                      <%=user.department%><br />
+                        <%=user.email%><br />
+                          <%=user.department%><br />
                     </p>
                   </div>
                 </div>
@@ -37,31 +41,37 @@
                       <th>Course Code</th>
                       <!-- <th>Lecture</th> -->
                       <th>Credit Hours</th>
+                      <th>Status</th>
                       <th>Approved By</th>
-                      <!-- <th>Status</th> -->
-                      <!-- <th>Actions</th> -->
+                      <th>Actions</th>
 
                     </tr>
                   </thead>
                   <tbody>
                     <%lessons.forEach(lesson=>{%>
-                    <tr class="add-row">
-                      <td>
-                        <%=moment(lesson.date).format("LL")%>
-                      </td>
-                      <td>
-                        <%=lesson.time%>
-                      </td>
-                      <td>
-                        <%=lesson.course_code%>
-                      </td>
-                      <td>
-                        <%=lesson.credit_hours%>
-                      </td>
-                      <td>
-                        <%=lesson.approved_by%>
-                      </td>
-                      <!-- <td>
+                      <tr class="add-row">
+                        <td>
+                          <%=moment(lesson.date).format("LL")%>
+                        </td>
+                        <td>
+                          <%=lesson.time%>
+                        </td>
+                        <td>
+                          <%=lesson.course_code%>
+                        </td>
+                        <td>
+                          <%=lesson.credit_hours%>
+                        </td>
+                        <td>
+                          <%=lesson.approval_status%>
+                        </td>
+                        <td>
+                          <%=lesson.approved_by%>
+                        </td>
+                        <td class="add-remove text-end">
+                          <a href="javascript:void(0);"class="remove-btn"><i class="fas fa-plus-remove"></i></a>
+                        </td>
+                        <!-- <td>
                         <input type="date" class="form-control" />
                       </td>
                       <td>
@@ -91,8 +101,8 @@
                           ><i class="fe fe-trash-2"></i
                         ></a>
                       </td> -->
-                    </tr>
-                    <%})%>
+                      </tr>
+                      <%})%>
                   </tbody>
                 </table>
               </div>
@@ -160,24 +170,36 @@
                 <input type="date" class="form-control" id="lessonDate" required>
               </div>
               <div class="row" style="padding: 10px;">
-                <label for="">Time</label>
-                <input type="time" class="form-control" id="time" required>
-              </div>
-              <div class="row" style="padding: 10px;">
                 <label for="">Course Code</label>
-                <input type="text" class="form-control" id="courseCode" required>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="row" style="padding: 10px;">
-                <label for="">Class</label>
-                <input type="text" class="form-control" id="class" required>
+                <input list="courseCodes" type="text" class="form-control" id="courseCode" name="courseCode" required>
+                <datalist id="courseCodes">
+                  <%courses.forEach(course=>{%>
+                  <option value="<%=course%>"></option>
+                  <%})%>
+                </datalist>
               </div>
               <div class="row" style="padding: 10px;">
                 <label for="">Credit Hourse</label>
                 <input type="number" class="form-control" id="creditHours">
               </div>
+
+            </div>
+
+            <div class="col-md-6">
+              <div class="row" style="padding: 10px;">
+                <label for="">Time</label>
+                <input type="time" class="form-control" id="time" required>
+              </div>
+              <div class="row" style="padding: 10px;">
+                <label for="">Class</label>
+                <input list="classes" type="text" class="form-control" id="class" required>
+                <datalist id="classes">
+                  <%classes.forEach(classe=>{%>
+                  <option value="<%=classe%>"></option>
+                  <%})%>
+                </datalist>
+              </div>
+
               <!-- <div class="row">
               <label for="">Course Code</label>
               <input type="text" class="form-control" id="courseCode">

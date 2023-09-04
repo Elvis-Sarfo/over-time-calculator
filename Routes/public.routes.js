@@ -40,11 +40,16 @@ public_routes.edit_subject = "/edit-subject";
 
 public_routes.claims= "/claims";
 
+public_routes.claimsIdParam="/claims/:id";
+
+public_routes.claim_approvals= "/claim-approvals";
+
 public_routes.add_claim= "/add-claim";
 
 public_routes.edit_claim= "/edit-claim/:id";
 
 public_routes.view_claim= "/view-claim";
+
 
 public_routes.settings= "/settings";
 
@@ -61,6 +66,7 @@ public_routes.forgot_password = "/forgot-password";
 public_routes.blank_page = "/blank-page";
 // -------------( Lessons ) ----------------
 public_routes.lesson="/lesson";
+public_routes.lessonIdParam="/lesson/:id";
 
 // ------------ ( error page ) ----------------
 public_routes.pageNotFount = "/error-404";

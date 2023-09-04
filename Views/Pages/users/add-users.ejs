@@ -140,9 +140,12 @@
                   <select class="form-control select" id="select_role" onchange="change()" required>
                     <option>Please Select role</option>
                     <option value="admin">Admin</option>
-                    <option value="class_rep">Class rep</option>
+                    <option value="class_rep">Class Rep</option>
                     <option value="lecturer">Lecturer</option>
                     <option value="registrer">Registrer</option>
+                    <option value="hod">Head of Department</option>
+                    <option value="finance">Finance</option>
+                    <option value="vc">Vice Chancellor</option>
                   </select>
                 </div>
               </div>
@@ -150,13 +153,12 @@
               <div class="col-12 col-sm-4" id="class" style="display: none;">
                 <div class="form-group local-forms">
                   <label>Class <span class="login-danger">*</span></label>
-                  <select class="form-control select" id="select_class">
-                    <option>Please Select Class</option>
-                    <option value="ITE A">ITE A</option>
-                    <option value="ITE B">ITE B</option>
-                    <option value="ITE C">ITE C</option>
-                    <option value="ITE D">ITE D</option>
-                  </select>
+                  <input list="classes" type="text" class="form-control" id="select_class">
+                  <datalist id="classes">
+                    <%classes.forEach(classe=>{%>
+                    <option value="<%=classe%>"></option>
+                    <%})%>
+                  </datalist>
                 </div>
               </div>
               <!-- <div class="col-12 col-sm-4">

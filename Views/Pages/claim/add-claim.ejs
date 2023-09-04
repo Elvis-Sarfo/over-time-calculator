@@ -25,6 +25,7 @@
                 <h5>Part A - Details of Claimant</h5>
               </div>
               <div class="col-12 col-sm-6">
+                <input id="lecturer_id" name="lecturer_id" type="number" class="form-control" value="<%=user.id%>" hidden/>
                 <div class="form-group">
                   <label>Name</label>
                   <input type="text" class="form-control" value="<%=user.name%>" disabled/>
@@ -80,11 +81,12 @@
   document.getElementById('claim_form').addEventListener('submit',(e)=>{
     e.preventDefault()
     const staffNumber=document.getElementById('stfNumber').value
+    const lecturer_id=document.getElementById('lecturer_id').value
     const designation=document.getElementById('designation').value
     const year=document.getElementById('year').value
-    console.log(staffNumber,designation,year)
+    console.log(lecturer_id,designation,year)
     const claimObj={
-      'lecturer_id':staffNumber,
+      'lecturer_id':lecturer_id,
       // 'designation':designation,
       // 'academicYear':year
     }

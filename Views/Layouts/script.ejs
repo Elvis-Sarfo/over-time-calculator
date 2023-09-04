@@ -134,15 +134,16 @@
     const courseCode = document.getElementById('courseCode').value
     const className = document.getElementById('class').value
     const creditHours = document.getElementById('creditHours').value
-    const claimID = document.getElementById('claimID').innerHTML
-    const lecturerID = document.getElementById('lecturerID').innerHTML
+    const claimID = document.getElementById('claimID').innerHTML.trim()
+    const lecturerID = document.getElementById('lecturerID').innerHTML.trim()
     const lessonObj = {
       'date': lessonDate,
       'time': time,
       'course_code': courseCode,
       'credit_hours': creditHours,
-      'lecturer_id': lecturerID,
-      'claim_id': claimID
+      'lecturer_id': Number(lecturerID),
+      'claim_id':Number(claimID),
+      'class_name': className
     }
     console.log(lessonDate, time, courseCode, creditHours, lecturerID, claimID);
     fetch('/lesson', {

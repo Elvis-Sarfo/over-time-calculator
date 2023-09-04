@@ -3,10 +3,10 @@
   <div class="page-header">
     <div class="row align-items-center">
       <div class="col">
-        <h3 class="page-title">My Claims</h3>
+        <h3 class="page-title">Claim Approvals</h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="index">Dashboard</a></li>
-          <li class="breadcrumb-item active">Claims</li>
+          <li class="breadcrumb-item active">Claim</li>
         </ul>
       </div>
     </div>
@@ -17,20 +17,6 @@
     <div class="col-sm-12">
       <div class="card card-table">
         <div class="card-body">
-          <!-- Page Header -->
-          <div class="page-header">
-            <div class="row align-items-center">
-              <div class="col">
-                <!-- <h3 class="page-title">Claim</h3> -->
-              </div>
-              <div class="col-auto text-end float-end ms-auto download-grp">
-                <a href="add-claim" class="btn btn-primary">
-                  <i class="fas fa-plus"></i>
-                  Add New Claim
-                </a>
-              </div>
-            </div>
-          </div>
           <!-- /Page Header -->
           <div class="table-responsive">
             <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
@@ -41,7 +27,7 @@
                   <th>Lecturer Name</th>
                   <th>Status</th>
                   <th>Payment Status</th>
-                  <th class="">Action</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -58,7 +44,7 @@
                     </td>
                     <td class="status">
                       <span class="badge bg-info">
-                        <%=claim.approval_status%>
+                        <%=claim[statusField]%>
                       </span>
                     </td>
                     <td class="status">
@@ -66,10 +52,15 @@
                         <%=claim.payment_status%>
                       </span>
                     </td>
-                    <td class="">
-                      <a href="edit-claim/<%=claim.id%>" class="btn btn-sm bg-primary">
-                        <i class="fas fa-plus"></i> Add Lessons
-                      </a>
+                    <td class="text-center">
+                      <div class="actions">
+                        <a data-id="<%=claim.id%>" class="btn btn-sm bg-danger-light approve">
+                          <i class="fa fa-check"></i>
+                        </a>
+                        <a data-id="<%=claim.id%>" class="btn btn-sm bg-danger-light reject">
+                          <i class="fa fa-times"></i>
+                        </a>
+                      </div>
                     </td>
                   </tr>
                   <%})%>
@@ -127,5 +118,95 @@
           buttonsStyling: !1,
         });
       })
+  })
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let approve = document.querySelectorAll('.approve');
+    for (let i = 0; i < approve.length; i++) {
+      const element = approve[i]
+      element.addEventListener('click', (e) => {
+        e.preventDefault()
+        fetch('/claims/' + element.dataset.id, {
+          method: "PUT",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ status: "Approved" })
+        }
+        ).then(finalres => {
+          if (finalres?.status == 200) {
+            Swal.fire({
+              title: "Lesson updated Succesfully 😀",
+              confirmButtonClass: "btn btn-primary",
+              buttonsStyling: !1,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location = "/claim-approvals";
+              }
+            });
+          } else {
+            Swal.fire({
+              title: "Problem updating lesson ",
+              confirmButtonClass: "btn btn-primary",
+              buttonsStyling: !1,
+            })
+          }
+        }).catch(error => {
+          Swal.fire({
+            title: "Problem updating lesson ",
+            confirmButtonClass: "btn btn-primary",
+            buttonsStyling: !1,
+          })
+        })
+      })
+    }
+
+  })
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let reject = document.querySelectorAll('.reject');
+    for (let i = 0; i < reject.length; i++) {
+      const element = reject[i]
+      element.addEventListener('click', (e) => {
+        e.preventDefault()
+        fetch('/claims/' + element.dataset.id, {
+          method: "PUT",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ status: "Rejected" })
+        }
+        ).then(finalres => {
+          if (finalres?.status == 200) {
+            Swal.fire({
+              title: "Lesson updated Succesfully 😀",
+              confirmButtonClass: "btn btn-primary",
+              buttonsStyling: !1,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location = "/claim-approvals";
+              }
+            });
+          } else {
+            Swal.fire({
+              title: "Problem updating lesson ",
+              confirmButtonClass: "btn btn-primary",
+              buttonsStyling: !1,
+            })
+          }
+        }).catch(error => {
+          Swal.fire({
+            title: "Problem updating lesson ",
+            confirmButtonClass: "btn btn-primary",
+            buttonsStyling: !1,
+          })
+        })
+      })
+    }
+
   })
 </script>
